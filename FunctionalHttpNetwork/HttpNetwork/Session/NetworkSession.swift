@@ -29,7 +29,7 @@ struct NetworkSession {
         )
     }
     
-    func buildResponse(from response: HTTPURLResponse, data: Data?, error: Error?) -> ApiResponse? {
+    func buildResponse(from response: HTTPURLResponse, data: Data?, error: Error?) -> ApiResponseProtocol? {
         let status = self.buildStatus(from: response.statusCode)
         
         guard let urlNotNil = response.url,
@@ -38,7 +38,6 @@ struct NetworkSession {
             return nil
         }
         
-        // TODO: Implement init method
         let apiResponse = ApiResponse(status: status,
                                       urlComponents: urlComponents,
                                       headers: response.allHeaderFields,
@@ -75,13 +74,13 @@ struct NetworkSession {
         return status
     }
     
-    func performRequest(for resource: ApiResource) -> ApiResponse? {
+    func performRequest(for resource: ApiResource) -> ApiResponseProtocol? {
         guard let urlRequest = self.buildURLRequest(from: resource) else {
             print("Invalid request")
             return nil
         }
         
-        var apiResponse: ApiResponse? = nil
+        var apiResponse: ApiResponseProtocol? = nil
         self.urlSession.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             guard let responseNotNil = response as? HTTPURLResponse else {
                 print("Invalid response")

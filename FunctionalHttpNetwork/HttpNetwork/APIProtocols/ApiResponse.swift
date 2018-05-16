@@ -17,7 +17,17 @@ enum Status {
     case serverError
     case unknown
 }
- struct ApiResponse {
+
+protocol ApiResponseProtocol {
+    var status: Status { get set }
+    var urlComponents: URLComponents { get set }
+    var headers: [AnyHashable: Any]? { get set }
+    var data: Data? { get set }
+    var error: Error? { get set }
+    var logLevel: LogLevel { get set }
+}
+
+struct ApiResponse: ApiResponseProtocol {
     var status: Status
     var urlComponents: URLComponents
     var headers: [AnyHashable: Any]?
