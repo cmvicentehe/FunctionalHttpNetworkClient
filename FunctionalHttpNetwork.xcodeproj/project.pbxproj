@@ -17,6 +17,8 @@
 		8F0EC03E200624A0008D85C8 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC03D200624A0008D85C8 /* Future.swift */; };
 		8F1A5B2E200786AA005997F6 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A5B2D200786AA005997F6 /* LogLevel.swift */; };
 		8F1A5B30200787DF005997F6 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A5B2F200787DF005997F6 /* ApiResponse.swift */; };
+		8F9D577420AC26810032BE69 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D577320AC26810032BE69 /* Result.swift */; };
+		8F9D577620AC29840032BE69 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D577520AC29840032BE69 /* Logger.swift */; };
 		D49772A720A8A9F9009B9D0E /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49772A620A8A9F9009B9D0E /* NetworkSession.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,8 @@
 		8F0EC03D200624A0008D85C8 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		8F1A5B2D200786AA005997F6 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
 		8F1A5B2F200787DF005997F6 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
+		8F9D577320AC26810032BE69 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		8F9D577520AC29840032BE69 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		D49772A620A8A9F9009B9D0E /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				8F1A5B2D200786AA005997F6 /* LogLevel.swift */,
+				8F9D577320AC26810032BE69 /* Result.swift */,
+				8F9D577520AC29840032BE69 /* Logger.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -282,8 +288,10 @@
 				8F0EC038200600D3008D85C8 /* AppDelegate.swift in Sources */,
 				8F0EC037200600D3008D85C8 /* ViewController.swift in Sources */,
 				8F0EC03E200624A0008D85C8 /* Future.swift in Sources */,
+				8F9D577620AC29840032BE69 /* Logger.swift in Sources */,
 				8F1A5B30200787DF005997F6 /* ApiResponse.swift in Sources */,
 				8F1A5B2E200786AA005997F6 /* LogLevel.swift in Sources */,
+				8F9D577420AC26810032BE69 /* Result.swift in Sources */,
 				8F0EC03B200606AA008D85C8 /* ApiResource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

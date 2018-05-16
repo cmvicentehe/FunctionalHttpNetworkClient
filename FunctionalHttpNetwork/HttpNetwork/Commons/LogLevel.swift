@@ -10,6 +10,7 @@ import Foundation
 
 enum LogLevel {
     case debug
+    case info
     case error
     case none
 }
