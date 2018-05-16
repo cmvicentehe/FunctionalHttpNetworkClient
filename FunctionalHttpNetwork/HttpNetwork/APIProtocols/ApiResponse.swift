@@ -8,17 +8,20 @@
 
 import Foundation
 
+/// HTTP status codes according to https://es.wikipedia.org/wiki/Anexo:Códigos_de_estado_HTTP
 enum Status {
+    case info
     case success
-    case error
+    case clientError
+    case redirection
+    case serverError
     case unknown
 }
-
-protocol ApiResponse {
-    var status: Status { get set }
-    var url: URLComponents { get set }
-    var headers: [AnyHashable: Any]?  { get set }
-    var data: Data?  { get set }
-    var error: Error? { get set }
-    var logLevel: LogLevel { get set }
+ struct ApiResponse {
+    var status: Status
+    var urlComponents: URLComponents
+    var headers: [AnyHashable: Any]?
+    var data: Data?
+    var error: Error?
+    var logLevel: LogLevel
 }

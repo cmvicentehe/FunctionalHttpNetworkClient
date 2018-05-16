@@ -10,9 +10,11 @@ import Foundation
 
 struct NetworkSession {
     let urlSession: URLSession
+    let logLevel: LogLevel
     
     init() {
         self.urlSession = URLSession(configuration: URLSessionConfiguration.default)
+        self.logLevel = .debug
     }
     
     func buildURLRequest(from resource: ApiResource) -> URLRequest? {
@@ -27,9 +29,50 @@ struct NetworkSession {
         )
     }
     
-    func buildResponse(from response: URLResponse) -> ApiResponse? {
-        // TODO: Implement ApiResponse builder with information provided by url session
-       return nil
+    func buildResponse(from response: HTTPURLResponse, data: Data?, error: Error?) -> ApiResponse? {
+        let status = self.buildStatus(from: response.statusCode)
+        
+        guard let urlNotNil = response.url,
+        let urlComponents = URLComponents(url: urlNotNil, resolvingAgainstBaseURL: true) else {
+            print("Invalid url from response object")
+            return nil
+        }
+        
+        // TODO: Implement init method
+        let apiResponse = ApiResponse(status: status,
+                                      urlComponents: urlComponents,
+                                      headers: response.allHeaderFields,
+                                      data: data,
+                                      error: error,
+                                      logLevel: self.logLevel)
+        
+        return apiResponse
+    }
+    
+    func buildStatus(from statusCode: Int) -> Status {
+        var status: Status = .unknown
+        switch statusCode {
+        case 100...199:
+            status = .info
+            break
+        case 200...299:
+            status = .success
+            break
+        case 300...399:
+            status = .redirection
+            break
+        case 400...499:
+            status = .clientError
+            break
+        case 500...599:
+            status = .serverError
+            break
+        default:
+            status = .unknown
+            break
+        }
+            
+        return status
     }
     
     func performRequest(for resource: ApiResource) -> ApiResponse? {
@@ -40,11 +83,11 @@ struct NetworkSession {
         
         var apiResponse: ApiResponse? = nil
         self.urlSession.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
-            guard let responseNotNil = response else {
+            guard let responseNotNil = response as? HTTPURLResponse else {
                 print("Invalid response")
                 return
             }
-            apiResponse = self.buildResponse(from: responseNotNil)
+            apiResponse = self.buildResponse(from: responseNotNil, data: data, error: error)
         })
         
         return apiResponse
