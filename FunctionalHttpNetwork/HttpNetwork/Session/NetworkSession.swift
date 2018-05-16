@@ -12,9 +12,15 @@ struct NetworkSession {
     let urlSession: URLSession
     let logLevel: LogLevel
     
+    init(urlSession: URLSession, logLevel: LogLevel) {
+        self.urlSession = urlSession
+        self.logLevel = logLevel
+    }
+    
     init() {
-        self.urlSession = URLSession(configuration: URLSessionConfiguration.default)
-        self.logLevel = .debug
+        let urlSession = URLSession(configuration: URLSessionConfiguration.default)
+        let logLevel: LogLevel = .debug
+        self.init(urlSession: urlSession, logLevel: logLevel)
     }
     
     func buildURLRequest(from resource: ApiResource) -> URLRequest? {
