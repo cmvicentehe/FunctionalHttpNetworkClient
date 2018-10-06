@@ -13,13 +13,16 @@
 		8F0EC035200600D3008D85C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0EC02B200600D2008D85C8 /* Main.storyboard */; };
 		8F0EC037200600D3008D85C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC030200600D2008D85C8 /* ViewController.swift */; };
 		8F0EC038200600D3008D85C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC032200600D2008D85C8 /* AppDelegate.swift */; };
-		8F0EC03B200606AA008D85C8 /* ApiResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC03A200606AA008D85C8 /* ApiResource.swift */; };
-		8F0EC03E200624A0008D85C8 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC03D200624A0008D85C8 /* Future.swift */; };
-		8F1A5B2E200786AA005997F6 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A5B2D200786AA005997F6 /* LogLevel.swift */; };
-		8F1A5B30200787DF005997F6 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A5B2F200787DF005997F6 /* ApiResponse.swift */; };
-		8F9D577420AC26810032BE69 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D577320AC26810032BE69 /* Result.swift */; };
-		8F9D577620AC29840032BE69 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D577520AC29840032BE69 /* Logger.swift */; };
-		D49772A720A8A9F9009B9D0E /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49772A620A8A9F9009B9D0E /* NetworkSession.swift */; };
+		D4795C19216928240079EC7A /* FunctionalHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = D4795C09216928240079EC7A /* FunctionalHttpClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4795C1C216928240079EC7A /* FunctionalHttpClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4795C07216928240079EC7A /* FunctionalHttpClient.framework */; };
+		D4795C1D216928240079EC7A /* FunctionalHttpClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4795C07216928240079EC7A /* FunctionalHttpClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D4795C25216928810079EC7A /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A5B2D200786AA005997F6 /* LogLevel.swift */; };
+		D4795C26216928850079EC7A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D577320AC26810032BE69 /* Result.swift */; };
+		D4795C27216928890079EC7A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D577520AC29840032BE69 /* Logger.swift */; };
+		D4795C282169288D0079EC7A /* ApiResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC03A200606AA008D85C8 /* ApiResource.swift */; };
+		D4795C29216928910079EC7A /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A5B2F200787DF005997F6 /* ApiResponse.swift */; };
+		D4795C2A216928970079EC7A /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC03D200624A0008D85C8 /* Future.swift */; };
+		D4795C2B2169289C0079EC7A /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49772A620A8A9F9009B9D0E /* NetworkSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +33,28 @@
 			remoteGlobalIDString = 8F0EBFFB2005FF49008D85C8;
 			remoteInfo = FunctionalHttpNetwork;
 		};
+		D4795C1A216928240079EC7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F0EBFF42005FF49008D85C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4795C06216928240079EC7A;
+			remoteInfo = FunctionalHttpClient;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D4795C21216928250079EC7A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D4795C1D216928240079EC7A /* FunctionalHttpClient.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8F0EBFFC2005FF49008D85C8 /* FunctionalHttpNetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunctionalHttpNetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +73,11 @@
 		8F1A5B2F200787DF005997F6 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		8F9D577320AC26810032BE69 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		8F9D577520AC29840032BE69 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		D4795C07216928240079EC7A /* FunctionalHttpClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FunctionalHttpClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4795C09216928240079EC7A /* FunctionalHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunctionalHttpClient.h; sourceTree = "<group>"; };
+		D4795C0A216928240079EC7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4795C16216928240079EC7A /* FunctionalHttpClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionalHttpClientTests.swift; sourceTree = "<group>"; };
+		D4795C18216928240079EC7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D49772A620A8A9F9009B9D0E /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,10 +86,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4795C1C216928240079EC7A /* FunctionalHttpClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8F0EC00D2005FF49008D85C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4795C04216928240079EC7A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -75,6 +112,8 @@
 			children = (
 				8F0EBFFE2005FF49008D85C8 /* FunctionalHttpNetwork */,
 				8F0EC0132005FF49008D85C8 /* FunctionalHttpNetworkTests */,
+				D4795C08216928240079EC7A /* FunctionalHttpClient */,
+				D4795C15216928240079EC7A /* FunctionalHttpClientTests */,
 				8F0EBFFD2005FF49008D85C8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,6 +123,7 @@
 			children = (
 				8F0EBFFC2005FF49008D85C8 /* FunctionalHttpNetwork.app */,
 				8F0EC0102005FF49008D85C8 /* FunctionalHttpNetworkTests.xctest */,
+				D4795C07216928240079EC7A /* FunctionalHttpClient.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,7 +133,6 @@
 			children = (
 				8F0EC031200600D2008D85C8 /* AppDelegate */,
 				8F0EC02F200600D2008D85C8 /* Home */,
-				8F0EC02E200600D2008D85C8 /* HttpNetwork */,
 				8F0EC027200600D2008D85C8 /* Resources */,
 			);
 			path = FunctionalHttpNetwork;
@@ -173,6 +212,25 @@
 			path = Commons;
 			sourceTree = "<group>";
 		};
+		D4795C08216928240079EC7A /* FunctionalHttpClient */ = {
+			isa = PBXGroup;
+			children = (
+				8F0EC02E200600D2008D85C8 /* HttpNetwork */,
+				D4795C09216928240079EC7A /* FunctionalHttpClient.h */,
+				D4795C0A216928240079EC7A /* Info.plist */,
+			);
+			path = FunctionalHttpClient;
+			sourceTree = "<group>";
+		};
+		D4795C15216928240079EC7A /* FunctionalHttpClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				D4795C16216928240079EC7A /* FunctionalHttpClientTests.swift */,
+				D4795C18216928240079EC7A /* Info.plist */,
+			);
+			path = FunctionalHttpClientTests;
+			sourceTree = "<group>";
+		};
 		D49772A520A8A9DE009B9D0E /* Session */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +241,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		D4795C02216928240079EC7A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4795C19216928240079EC7A /* FunctionalHttpClient.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		8F0EBFFB2005FF49008D85C8 /* FunctionalHttpNetwork */ = {
 			isa = PBXNativeTarget;
@@ -191,10 +260,12 @@
 				8F0EBFF82005FF49008D85C8 /* Sources */,
 				8F0EBFF92005FF49008D85C8 /* Frameworks */,
 				8F0EBFFA2005FF49008D85C8 /* Resources */,
+				D4795C21216928250079EC7A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D4795C1B216928240079EC7A /* PBXTargetDependency */,
 			);
 			name = FunctionalHttpNetwork;
 			productName = FunctionalHttpNetwork;
@@ -219,13 +290,31 @@
 			productReference = 8F0EC0102005FF49008D85C8 /* FunctionalHttpNetworkTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D4795C06216928240079EC7A /* FunctionalHttpClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4795C1E216928250079EC7A /* Build configuration list for PBXNativeTarget "FunctionalHttpClient" */;
+			buildPhases = (
+				D4795C02216928240079EC7A /* Headers */,
+				D4795C03216928240079EC7A /* Sources */,
+				D4795C04216928240079EC7A /* Frameworks */,
+				D4795C05216928240079EC7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FunctionalHttpClient;
+			productName = FunctionalHttpClient;
+			productReference = D4795C07216928240079EC7A /* FunctionalHttpClient.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		8F0EBFF42005FF49008D85C8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = cmvicentehe;
 				TargetAttributes = {
@@ -239,6 +328,10 @@
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 8F0EBFFB2005FF49008D85C8;
+					};
+					D4795C06216928240079EC7A = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -257,6 +350,7 @@
 			targets = (
 				8F0EBFFB2005FF49008D85C8 /* FunctionalHttpNetwork */,
 				8F0EC00F2005FF49008D85C8 /* FunctionalHttpNetworkTests */,
+				D4795C06216928240079EC7A /* FunctionalHttpClient */,
 			);
 		};
 /* End PBXProject section */
@@ -279,6 +373,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4795C05216928240079EC7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -286,15 +387,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D49772A720A8A9F9009B9D0E /* NetworkSession.swift in Sources */,
 				8F0EC038200600D3008D85C8 /* AppDelegate.swift in Sources */,
 				8F0EC037200600D3008D85C8 /* ViewController.swift in Sources */,
-				8F0EC03E200624A0008D85C8 /* Future.swift in Sources */,
-				8F9D577620AC29840032BE69 /* Logger.swift in Sources */,
-				8F1A5B30200787DF005997F6 /* ApiResponse.swift in Sources */,
-				8F1A5B2E200786AA005997F6 /* LogLevel.swift in Sources */,
-				8F9D577420AC26810032BE69 /* Result.swift in Sources */,
-				8F0EC03B200606AA008D85C8 /* ApiResource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +400,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4795C03216928240079EC7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4795C2B2169289C0079EC7A /* NetworkSession.swift in Sources */,
+				D4795C2A216928970079EC7A /* Future.swift in Sources */,
+				D4795C26216928850079EC7A /* Result.swift in Sources */,
+				D4795C27216928890079EC7A /* Logger.swift in Sources */,
+				D4795C282169288D0079EC7A /* ApiResource.swift in Sources */,
+				D4795C29216928910079EC7A /* ApiResponse.swift in Sources */,
+				D4795C25216928810079EC7A /* LogLevel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -313,6 +421,11 @@
 			isa = PBXTargetDependency;
 			target = 8F0EBFFB2005FF49008D85C8 /* FunctionalHttpNetwork */;
 			targetProxy = 8F0EC0112005FF49008D85C8 /* PBXContainerItemProxy */;
+		};
+		D4795C1B216928240079EC7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4795C06216928240079EC7A /* FunctionalHttpClient */;
+			targetProxy = D4795C1A216928240079EC7A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -450,6 +563,7 @@
 		8F0EC01A2005FF49008D85C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PY2HS9FGVN;
@@ -465,6 +579,7 @@
 		8F0EC01B2005FF49008D85C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PY2HS9FGVN;
@@ -511,6 +626,61 @@
 			};
 			name = Release;
 		};
+		D4795C1F216928250079EC7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PY2HS9FGVN;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = FunctionalHttpClient/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cmvicentehe.FunctionalHttpClient;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D4795C20216928250079EC7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PY2HS9FGVN;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = FunctionalHttpClient/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cmvicentehe.FunctionalHttpClient;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -537,6 +707,15 @@
 			buildConfigurations = (
 				8F0EC01D2005FF49008D85C8 /* Debug */,
 				8F0EC01E2005FF49008D85C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4795C1E216928250079EC7A /* Build configuration list for PBXNativeTarget "FunctionalHttpClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4795C1F216928250079EC7A /* Debug */,
+				D4795C20216928250079EC7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
