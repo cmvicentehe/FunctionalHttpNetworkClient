@@ -11,8 +11,11 @@
 		8F0EC033200600D3008D85C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0EC028200600D2008D85C8 /* Assets.xcassets */; };
 		8F0EC034200600D3008D85C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0EC029200600D2008D85C8 /* LaunchScreen.storyboard */; };
 		8F0EC035200600D3008D85C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0EC02B200600D2008D85C8 /* Main.storyboard */; };
-		8F0EC037200600D3008D85C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC030200600D2008D85C8 /* ViewController.swift */; };
+		8F0EC037200600D3008D85C8 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC030200600D2008D85C8 /* HomeVC.swift */; };
 		8F0EC038200600D3008D85C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC032200600D2008D85C8 /* AppDelegate.swift */; };
+		D4189153216A40E200882BFC /* NewMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4189152216A40E200882BFC /* NewMessageVC.swift */; };
+		D4189157216A415C00882BFC /* MessageListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4189156216A415C00882BFC /* MessageListVC.swift */; };
+		D418915A216A42DF00882BFC /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4189159216A42DF00882BFC /* NetworkClient.swift */; };
 		D4795C19216928240079EC7A /* FunctionalHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = D4795C09216928240079EC7A /* FunctionalHttpClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4795C1C216928240079EC7A /* FunctionalHttpClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4795C07216928240079EC7A /* FunctionalHttpClient.framework */; };
 		D4795C1D216928240079EC7A /* FunctionalHttpClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4795C07216928240079EC7A /* FunctionalHttpClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -65,7 +68,7 @@
 		8F0EC02A200600D2008D85C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F0EC02C200600D2008D85C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8F0EC02D200600D2008D85C8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8F0EC030200600D2008D85C8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8F0EC030200600D2008D85C8 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		8F0EC032200600D2008D85C8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F0EC03A200606AA008D85C8 /* ApiResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResource.swift; sourceTree = "<group>"; };
 		8F0EC03D200624A0008D85C8 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
@@ -73,11 +76,13 @@
 		8F1A5B2F200787DF005997F6 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		8F9D577320AC26810032BE69 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		8F9D577520AC29840032BE69 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		D4189150216A094300882BFC /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		D4189152216A40E200882BFC /* NewMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageVC.swift; sourceTree = "<group>"; };
+		D4189156216A415C00882BFC /* MessageListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListVC.swift; sourceTree = "<group>"; };
+		D4189159216A42DF00882BFC /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		D4795C07216928240079EC7A /* FunctionalHttpClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FunctionalHttpClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4795C09216928240079EC7A /* FunctionalHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunctionalHttpClient.h; sourceTree = "<group>"; };
 		D4795C0A216928240079EC7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4795C16216928240079EC7A /* FunctionalHttpClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionalHttpClientTests.swift; sourceTree = "<group>"; };
-		D4795C18216928240079EC7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D49772A620A8A9F9009B9D0E /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,7 +118,6 @@
 				8F0EBFFE2005FF49008D85C8 /* FunctionalHttpNetwork */,
 				8F0EC0132005FF49008D85C8 /* FunctionalHttpNetworkTests */,
 				D4795C08216928240079EC7A /* FunctionalHttpClient */,
-				D4795C15216928240079EC7A /* FunctionalHttpClientTests */,
 				8F0EBFFD2005FF49008D85C8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -131,9 +135,11 @@
 		8F0EBFFE2005FF49008D85C8 /* FunctionalHttpNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				D4189158216A42C600882BFC /* Network */,
 				8F0EC031200600D2008D85C8 /* AppDelegate */,
-				8F0EC02F200600D2008D85C8 /* Home */,
+				D418914F216A091C00882BFC /* Config */,
 				8F0EC027200600D2008D85C8 /* Resources */,
+				D4189154216A410F00882BFC /* Sections */,
 			);
 			path = FunctionalHttpNetwork;
 			sourceTree = "<group>";
@@ -172,7 +178,7 @@
 		8F0EC02F200600D2008D85C8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				8F0EC030200600D2008D85C8 /* ViewController.swift */,
+				8F0EC030200600D2008D85C8 /* HomeVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -212,6 +218,48 @@
 			path = Commons;
 			sourceTree = "<group>";
 		};
+		D418914F216A091C00882BFC /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				D4189150216A094300882BFC /* Config.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		D4189151216A40B200882BFC /* NewMessage */ = {
+			isa = PBXGroup;
+			children = (
+				D4189152216A40E200882BFC /* NewMessageVC.swift */,
+			);
+			path = NewMessage;
+			sourceTree = "<group>";
+		};
+		D4189154216A410F00882BFC /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				D4189155216A413000882BFC /* MessageList */,
+				8F0EC02F200600D2008D85C8 /* Home */,
+				D4189151216A40B200882BFC /* NewMessage */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		D4189155216A413000882BFC /* MessageList */ = {
+			isa = PBXGroup;
+			children = (
+				D4189156216A415C00882BFC /* MessageListVC.swift */,
+			);
+			path = MessageList;
+			sourceTree = "<group>";
+		};
+		D4189158216A42C600882BFC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D4189159216A42DF00882BFC /* NetworkClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		D4795C08216928240079EC7A /* FunctionalHttpClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,15 +268,6 @@
 				D4795C0A216928240079EC7A /* Info.plist */,
 			);
 			path = FunctionalHttpClient;
-			sourceTree = "<group>";
-		};
-		D4795C15216928240079EC7A /* FunctionalHttpClientTests */ = {
-			isa = PBXGroup;
-			children = (
-				D4795C16216928240079EC7A /* FunctionalHttpClientTests.swift */,
-				D4795C18216928240079EC7A /* Info.plist */,
-			);
-			path = FunctionalHttpClientTests;
 			sourceTree = "<group>";
 		};
 		D49772A520A8A9DE009B9D0E /* Session */ = {
@@ -387,8 +426,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4189157216A415C00882BFC /* MessageListVC.swift in Sources */,
+				D418915A216A42DF00882BFC /* NetworkClient.swift in Sources */,
 				8F0EC038200600D3008D85C8 /* AppDelegate.swift in Sources */,
-				8F0EC037200600D3008D85C8 /* ViewController.swift in Sources */,
+				D4189153216A40E200882BFC /* NewMessageVC.swift in Sources */,
+				8F0EC037200600D3008D85C8 /* HomeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +493,7 @@
 /* Begin XCBuildConfiguration section */
 		8F0EC0172005FF49008D85C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4189150216A094300882BFC /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -568,6 +611,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PY2HS9FGVN;
 				INFOPLIST_FILE = FunctionalHttpNetwork/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.functionalNetworkCommunication.FunctionalHttpNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -584,6 +628,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PY2HS9FGVN;
 				INFOPLIST_FILE = FunctionalHttpNetwork/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.functionalNetworkCommunication.FunctionalHttpNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -640,7 +685,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = FunctionalHttpClient/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -668,7 +713,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = FunctionalHttpClient/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmvicentehe.FunctionalHttpClient;

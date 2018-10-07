@@ -18,5 +18,7 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>HOST_URL</key>
+	<string>${HOST_URL}</string>
 </dict>
 </plist>

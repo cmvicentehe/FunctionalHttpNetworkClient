@@ -9,7 +9,7 @@
 import Foundation
 
 /// HTTP status codes according to https://es.wikipedia.org/wiki/Anexo:Códigos_de_estado_HTTP
-enum Status {
+public enum Status {
     case info
     case success
     case clientError
@@ -18,7 +18,7 @@ enum Status {
     case unknown
 }
 
-protocol ApiResponseProtocol {
+public protocol ApiResponseProtocol {
     var status: Status { get set }
     var urlComponents: URLComponents { get set }
     var headers: [AnyHashable: Any]? { get set }

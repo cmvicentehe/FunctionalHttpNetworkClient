@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Method {
+public enum Method {
     case get
     case post
     case put
@@ -16,7 +16,7 @@ enum Method {
     case patch
 }
 
-protocol ApiResource {
+public protocol ApiResource {
     var urlComponents: URLComponents { get set }
     var headers: [AnyHashable: Any]?  { get set }
     var bodyParameters: [AnyHashable: Any]?  { get set }

@@ -38,7 +38,7 @@ struct Logger {
         self.log(with: .error, message: message)
     }
     
-    fileprivate func log(with kind: KindOfLog,message: String) {
+    fileprivate func log(with kind: KindOfLog, message: String) {
         switch self.logLevel {
         case .debug:
             print("------> \(kind) --- \(message)")
