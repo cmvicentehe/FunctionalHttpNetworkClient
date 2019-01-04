@@ -12,4 +12,10 @@ struct Constants {
     struct Services {
         static let scheme = "https"
     }
+    
+    struct Keys {
+        static let hostUrl = "HOST_URL"
+        static let username = "username"
+        static let content = "content"
+    }
 }

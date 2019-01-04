@@ -17,11 +17,48 @@ public enum Method {
 }
 
 public protocol ApiResource {
-    var urlComponents: URLComponents { get set }
-    var headers: [AnyHashable: Any]?  { get set }
-    var bodyParameters: [AnyHashable: Any]?  { get set }
-    var logLevel: LogLevel { get set }
-    var method: Method { get set }
-    var cachePolicy: URLRequest.CachePolicy { get set }
-    var timeout: TimeInterval { get set }
+     var endPoint: String { get set }
+     var urlComponents: URLComponents { get }
+     var headers: [AnyHashable: Any]?  { get }
+     var bodyParameters: [AnyHashable: Any]?  { get }
+     var logLevel: LogLevel { get }
+     var method: Method { get }
+     var cachePolicy: URLRequest.CachePolicy { get }
+     var timeout: TimeInterval { get }
+}
+
+// MARK: Default implementation
+public extension ApiResource {
+
+     var headers: [AnyHashable: Any]? {
+        get {
+            return nil
+        }
+    }
+    
+     var bodyParameters: [AnyHashable: Any]? {
+        get {
+            return nil
+        }
+    }
+    
+     var logLevel: LogLevel {
+        get {
+            return .debug
+        }
+        
+    }
+    
+     var cachePolicy: URLRequest.CachePolicy {
+        get {
+            return URLRequest.CachePolicy.useProtocolCachePolicy
+        }
+        
+    }
+    
+     var timeout: TimeInterval {
+        get {
+            return 30
+        }
+    }
 }

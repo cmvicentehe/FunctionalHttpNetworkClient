@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8F0EBFFB2005FF49008D85C8"
-               BuildableName = "FunctionalHttpNetwork.app"
-               BlueprintName = "FunctionalHttpNetwork"
+               BuildableName = "FunctionalHttpNetworkApp.app"
+               BlueprintName = "FunctionalHttpNetworkApp"
                ReferencedContainer = "container:FunctionalHttpNetwork.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8F0EBFFB2005FF49008D85C8"
-            BuildableName = "FunctionalHttpNetwork.app"
-            BlueprintName = "FunctionalHttpNetwork"
+            BuildableName = "FunctionalHttpNetworkApp.app"
+            BlueprintName = "FunctionalHttpNetworkApp"
             ReferencedContainer = "container:FunctionalHttpNetwork.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,8 +66,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8F0EBFFB2005FF49008D85C8"
-            BuildableName = "FunctionalHttpNetwork.app"
-            BlueprintName = "FunctionalHttpNetwork"
+            BuildableName = "FunctionalHttpNetworkApp.app"
+            BlueprintName = "FunctionalHttpNetworkApp"
             ReferencedContainer = "container:FunctionalHttpNetwork.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -85,8 +85,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8F0EBFFB2005FF49008D85C8"
-            BuildableName = "FunctionalHttpNetwork.app"
-            BlueprintName = "FunctionalHttpNetwork"
+            BuildableName = "FunctionalHttpNetworkApp.app"
+            BlueprintName = "FunctionalHttpNetworkApp"
             ReferencedContainer = "container:FunctionalHttpNetwork.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -13,11 +13,14 @@
 		8F0EC035200600D3008D85C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0EC02B200600D2008D85C8 /* Main.storyboard */; };
 		8F0EC037200600D3008D85C8 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC030200600D2008D85C8 /* HomeVC.swift */; };
 		8F0EC038200600D3008D85C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC032200600D2008D85C8 /* AppDelegate.swift */; };
-		8F328B3321CAB5BC00384B4C /* AppResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F328B3221CAB5BC00384B4C /* AppResource.swift */; };
 		8FD2280A21CBF62900834320 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2280921CBF62900834320 /* Constants.swift */; };
 		D4189153216A40E200882BFC /* NewMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4189152216A40E200882BFC /* NewMessageVC.swift */; };
 		D4189157216A415C00882BFC /* MessageListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4189156216A415C00882BFC /* MessageListVC.swift */; };
 		D418915A216A42DF00882BFC /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4189159216A42DF00882BFC /* NetworkClient.swift */; };
+		D4295A3121DF77DA00577B86 /* SendMessageResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4295A3021DF77DA00577B86 /* SendMessageResource.swift */; };
+		D4295A3321DF7F9200577B86 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4295A3221DF7F9200577B86 /* Config.swift */; };
+		D4295A3521DF80B600577B86 /* ApiResourceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4295A3421DF80B600577B86 /* ApiResourceExtensions.swift */; };
+		D4295A3721DF82C300577B86 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4295A3621DF82C300577B86 /* Message.swift */; };
 		D4795C19216928240079EC7A /* FunctionalHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = D4795C09216928240079EC7A /* FunctionalHttpClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4795C1C216928240079EC7A /* FunctionalHttpClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4795C07216928240079EC7A /* FunctionalHttpClient.framework */; };
 		D4795C1D216928240079EC7A /* FunctionalHttpClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4795C07216928240079EC7A /* FunctionalHttpClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -28,6 +31,7 @@
 		D4795C29216928910079EC7A /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A5B2F200787DF005997F6 /* ApiResponse.swift */; };
 		D4795C2A216928970079EC7A /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC03D200624A0008D85C8 /* Future.swift */; };
 		D4795C2B2169289C0079EC7A /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49772A620A8A9F9009B9D0E /* NetworkSession.swift */; };
+		D4EEA09E21DCE5AE00B385CC /* MessageListResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EEA09D21DCE5AE00B385CC /* MessageListResource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +80,6 @@
 		8F0EC03D200624A0008D85C8 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		8F1A5B2D200786AA005997F6 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
 		8F1A5B2F200787DF005997F6 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
-		8F328B3221CAB5BC00384B4C /* AppResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppResource.swift; sourceTree = "<group>"; };
 		8F9D577320AC26810032BE69 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		8F9D577520AC29840032BE69 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		8FD2280921CBF62900834320 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -84,10 +87,15 @@
 		D4189152216A40E200882BFC /* NewMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageVC.swift; sourceTree = "<group>"; };
 		D4189156216A415C00882BFC /* MessageListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListVC.swift; sourceTree = "<group>"; };
 		D4189159216A42DF00882BFC /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		D4295A3021DF77DA00577B86 /* SendMessageResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageResource.swift; sourceTree = "<group>"; };
+		D4295A3221DF7F9200577B86 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		D4295A3421DF80B600577B86 /* ApiResourceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResourceExtensions.swift; sourceTree = "<group>"; };
+		D4295A3621DF82C300577B86 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D4795C07216928240079EC7A /* FunctionalHttpClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FunctionalHttpClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4795C09216928240079EC7A /* FunctionalHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunctionalHttpClient.h; sourceTree = "<group>"; };
 		D4795C0A216928240079EC7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D49772A620A8A9F9009B9D0E /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
+		D4EEA09D21DCE5AE00B385CC /* MessageListResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListResource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				8FD2280921CBF62900834320 /* Constants.swift */,
+				D4295A3621DF82C300577B86 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				D4189150216A094300882BFC /* Config.xcconfig */,
+				D4295A3221DF7F9200577B86 /* Config.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -276,8 +286,8 @@
 		D4189158216A42C600882BFC /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D4EEA09C21DCE54D00B385CC /* ApiResources */,
 				D4189159216A42DF00882BFC /* NetworkClient.swift */,
-				8F328B3221CAB5BC00384B4C /* AppResource.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -298,6 +308,16 @@
 				D49772A620A8A9F9009B9D0E /* NetworkSession.swift */,
 			);
 			path = Session;
+			sourceTree = "<group>";
+		};
+		D4EEA09C21DCE54D00B385CC /* ApiResources */ = {
+			isa = PBXGroup;
+			children = (
+				D4EEA09D21DCE5AE00B385CC /* MessageListResource.swift */,
+				D4295A3021DF77DA00577B86 /* SendMessageResource.swift */,
+				D4295A3421DF80B600577B86 /* ApiResourceExtensions.swift */,
+			);
+			path = ApiResources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,12 +469,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4189157216A415C00882BFC /* MessageListVC.swift in Sources */,
-				8F328B3321CAB5BC00384B4C /* AppResource.swift in Sources */,
 				D418915A216A42DF00882BFC /* NetworkClient.swift in Sources */,
+				D4295A3321DF7F9200577B86 /* Config.swift in Sources */,
 				8F0EC038200600D3008D85C8 /* AppDelegate.swift in Sources */,
+				D4295A3121DF77DA00577B86 /* SendMessageResource.swift in Sources */,
 				8FD2280A21CBF62900834320 /* Constants.swift in Sources */,
+				D4295A3721DF82C300577B86 /* Message.swift in Sources */,
+				D4295A3521DF80B600577B86 /* ApiResourceExtensions.swift in Sources */,
 				D4189153216A40E200882BFC /* NewMessageVC.swift in Sources */,
 				8F0EC037200600D3008D85C8 /* HomeVC.swift in Sources */,
+				D4EEA09E21DCE5AE00B385CC /* MessageListResource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +601,7 @@
 		};
 		8F0EC0182005FF49008D85C8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4189150216A094300882BFC /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -629,6 +654,7 @@
 		};
 		8F0EC01A2005FF49008D85C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4189150216A094300882BFC /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -646,6 +672,7 @@
 		};
 		8F0EC01B2005FF49008D85C8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4189150216A094300882BFC /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -663,6 +690,7 @@
 		};
 		8F0EC01D2005FF49008D85C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4189150216A094300882BFC /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -680,6 +708,7 @@
 		};
 		8F0EC01E2005FF49008D85C8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4189150216A094300882BFC /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
