@@ -8,13 +8,13 @@
 
 import Foundation
 
-typealias Task<Input> = (DispatchQueue, DispatchGroup, @escaping(Input) -> ()) -> ()
+public typealias Task<Input> = (DispatchQueue, DispatchGroup, @escaping(Input) -> ()) -> ()
 
-struct Future<Input>  {
+public struct Future<Input>  {
     let task: Task<Input>
     
     /******************************* ASYNC *******************************/
-    static func async(_ function: @autoclosure @escaping () -> Input) -> Future<Input> {
+    public static func async(_ function: @autoclosure @escaping () -> Input) -> Future<Input> {
         let task: Task<Input> = { (queue, _, continuation) in
             queue.async {
                 continuation(function())
@@ -24,12 +24,12 @@ struct Future<Input>  {
         return Future(task: task)
     }
     
-    func runAsync(_ queue: DispatchQueue = DispatchQueue.global(), _ group: DispatchGroup = DispatchGroup(), _ continuation: @escaping (Input) -> ()) {
+    public func runAsync(_ queue: DispatchQueue = DispatchQueue.global(), _ group: DispatchGroup = DispatchGroup(), _ continuation: @escaping (Input) -> ()) {
         self.task(queue, group, continuation)
     }
     
     /******************************* SYNC *******************************/
-    static func sync(_ function: @autoclosure @escaping () -> Input) -> Future<Input> {
+    public static func sync(_ function: @autoclosure @escaping () -> Input) -> Future<Input> {
         let task: Task<Input> = { (_ , _, continuation) in
             continuation(function())
         }
@@ -37,7 +37,7 @@ struct Future<Input>  {
         return Future(task: task)
     }
     
-    func runSync() -> Input? {
+    public func runSync() -> Input? {
         let queue: DispatchQueue = DispatchQueue.global()
         let group: DispatchGroup = DispatchGroup()
         var inputResult: Input? = nil
@@ -52,7 +52,7 @@ struct Future<Input>  {
     }
     
     /******************************* FUNCTOR *******************************/
-    func map<Output>(_ transform: @escaping (Input) -> Output) -> Future<Output> {
+    public func map<Output>(_ transform: @escaping (Input) -> Output) -> Future<Output> {
         return self.flatMap { input in
             let task: Task<Output> = { (queue, _, continuation) in
                 continuation(transform(input))
@@ -62,7 +62,7 @@ struct Future<Input>  {
     }
     
      /******************************* MONAD *******************************/
-    func flatMap<Output>(_ transform: @escaping (Input) -> Future<Output>) -> Future<Output> {
+    public func flatMap<Output>(_ transform: @escaping (Input) -> Future<Output>) -> Future<Output> {
         let task: Task<Output> = { (queue, group, continuation) in
             self.task(queue, group) { input in
                 let future = transform(input)
@@ -74,14 +74,14 @@ struct Future<Input>  {
     }
     
      /******************************* APPLICATIVE *******************************/
-    func pure(_ input: Input) -> Future<Input> {
+    public static func pure(_ input: Input) -> Future<Input> {
         let task: Task<Input> = { (_, _, continuation) in
             continuation(input)
         }
         return Future<Input>(task: task)
     }
     
-    func apply<Output>(_ future: Future<(Input) -> Output>) -> Future<Output> {
+    public func apply<Output>(_ future: Future<(Input) -> Output>) -> Future<Output> {
         let task: Task<Output> = { (queue, _, continuation) in
             var inputResult: Input? = nil
             var inputToOutputResult: ((Input) -> Output)? = nil

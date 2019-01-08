@@ -27,11 +27,11 @@ public protocol ApiResponseProtocol {
     var logLevel: LogLevel { get set }
 }
 
-struct ApiResponse: ApiResponseProtocol {
-    var status: Status
-    var urlComponents: URLComponents
-    var headers: [AnyHashable: Any]?
-    var data: Data?
-    var error: Error?
-    var logLevel: LogLevel
+ struct ApiResponse: ApiResponseProtocol {
+   var status: Status
+   var urlComponents: URLComponents
+   var headers: [AnyHashable: Any]?
+   var data: Data?
+   var error: Error?
+   var logLevel: LogLevel
 }

@@ -9,6 +9,8 @@
 import Foundation
 
 struct Message {
+    let id: UUID
     let username: String
     let content: String
+    let date: Date
 }

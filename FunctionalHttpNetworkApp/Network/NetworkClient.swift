@@ -10,16 +10,27 @@ import Foundation
 import FunctionalHttpClient
 
 protocol NetworkClientInput {
-     func performMessageListRequest(for endPoint: String)
+     func performMessageListRequest()
 }
 
 struct NetworkClient {
     let sessionWrapper: NetworkSession
+    
+    private func futureMessageResponse(for apiResource: ApiResource) -> Future<ApiResponseProtocol?> {
+        return Future.async(self.sessionWrapper.performRequest(for: apiResource))
+    }
+
 }
 
 extension NetworkClient: NetworkClientInput {
-    func performMessageListRequest(for endPoint: String) {
-        let _ = MessageListResource(endPoint: endPoint)
+    func performMessageListRequest() {
+        let messageListResource: ApiResource = MessageListResource(endPoint: Constants.Services.Endpoints.messages)
+        let future = Future.pure(messageListResource).flatMap(self.futureMessageResponse).runAsync { response in
+            print("RESPOSE: \(response)")
+            
+            #warning("Implement and check if it is working")
+        }
+        
         
     }
 }
