@@ -9,8 +9,10 @@
 import Foundation
 
 struct Message {
-    let id: UUID
+    let id: String
     let username: String
     let content: String
-    let date: Date
+    let date: String
 }
+
+extension Message: Codable {}

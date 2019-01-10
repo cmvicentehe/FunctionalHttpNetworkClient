@@ -12,9 +12,9 @@ struct Constants {
     struct Services {
         static let scheme = "https"
         struct Endpoints {
-            static let messages = "messages"
-            static let sendMessage = "send"
-            static let deleteMessage = "delete/{{messageId}}"
+            static let messages = "/messages"
+            static let sendMessage = "/send"
+            static let deleteMessage = "/delete/{{messageId}}"
         }
     }
     
@@ -31,7 +31,7 @@ struct Constants {
         struct viewControllers {
             static let homeVC = "HomeVC"
             static let messageListVC = "MessageListVC"
-            static let sendMessageVC = "SendMessageVC"
+            static let newMessageVC = "NewMessageVC"
         }
     }
 }

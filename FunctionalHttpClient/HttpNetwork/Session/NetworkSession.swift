@@ -19,7 +19,7 @@ public struct NetworkSession {
     let urlSession: URLSession
     let logLevel: LogLevel
     
-    init(urlSession: URLSession = URLSession(configuration: URLSessionConfiguration.default), logLevel: LogLevel = .debug) {
+    public init(urlSession: URLSession = URLSession(configuration: URLSessionConfiguration.default), logLevel: LogLevel = .debug) {
         self.urlSession = urlSession
         self.logLevel = logLevel
     }
@@ -92,16 +92,20 @@ extension NetworkSession: NetworkSessionInput {
             print("Invalid request")
             return nil
         }
-        
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
         var apiResponse: ApiResponseProtocol? = nil
         self.urlSession.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             guard let responseNotNil = response as? HTTPURLResponse else {
+                dispatchGroup.leave()
                 print("Invalid response")
                 return
             }
             apiResponse = self.buildResponse(from: responseNotNil, data: data, error: error)
-        })
+            dispatchGroup.leave()
+        }).resume()
         
+        dispatchGroup.wait()
         return apiResponse
     }
 }

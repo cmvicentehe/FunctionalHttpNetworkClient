@@ -13,13 +13,13 @@
         <!--Message list-->
         <scene sceneID="IED-Zv-wpK">
             <objects>
-                <viewController id="895-rJ-ptz" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageListVC" id="895-rJ-ptz" customClass="MessageListVC" customModule="FunctionalHttpNetworkApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I6x-la-5Ma">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JQN-ik-XXd">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -41,7 +41,7 @@
         <!--Send Message-->
         <scene sceneID="vaQ-jZ-j5Z">
             <objects>
-                <viewController id="WIL-bK-5Ea" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewMessageVC" id="WIL-bK-5Ea" customClass="NewMessageVC" customModule="FunctionalHttpNetworkApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kz2-vV-b0U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,20 +57,16 @@
         <!--HomeVC-->
         <scene sceneID="xMq-CV-OhW">
             <objects>
-                <tabBarController id="5Gf-Ic-blS" customClass="HomeVC" customModule="FunctionalHttpNetworkApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeVC" id="5Gf-Ic-blS" customClass="HomeVC" customModule="FunctionalHttpNetworkApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MBP-Jt-dO2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="895-rJ-ptz" kind="relationship" relationship="viewControllers" id="uSI-iH-YHs"/>
-                        <segue destination="WIL-bK-5Ea" kind="relationship" relationship="viewControllers" id="I36-d1-vbu"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="apB-R9-Dak" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="231" y="156"/>
+            <point key="canvasLocation" x="-116" y="152"/>
         </scene>
     </scenes>
     <resources>
