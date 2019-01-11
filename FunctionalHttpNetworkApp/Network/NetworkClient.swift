@@ -13,29 +13,36 @@ protocol NetworkClientInput {
     func performMessageListRequest()
 }
 
+enum MessageListServiceError: Error {
+    case invalidResponse
+}
+
 struct NetworkClient {
     let sessionWrapper: NetworkSession
     
     private func futureMessageResponse(for apiResource: ApiResource) -> Future<ApiResponseProtocol?> {
         return Future.async(self.sessionWrapper.performRequest(for: apiResource))
     }
+    
+    private func futureMessageResult(for response: ApiResponseProtocol?) -> Future<Result<[Message], MessageListServiceError>> {
+        guard let dataNotNil = response?.data,
+        let messages = try? JSONDecoder().decode([Message].self, from: dataNotNil) else {
+            print("Data is nil")
+            return  Future.pure(Result.error(MessageListServiceError.invalidResponse))
+        }
+       
+        return Future.pure(Result.success(messages))
+    }
 }
 
 extension NetworkClient: NetworkClientInput {
     func performMessageListRequest() {
-        let messageListResource: ApiResource = MessageListResource(endPoint: Constants.Services.Endpoints.messages)
+        let messageListResource = MessageListResource(endPoint: Constants.Services.Endpoints.messages)
         Future.pure(messageListResource)
-            .map(self.futureMessageResponse).runAsync { futureResponse in
-                futureResponse.runAsync { response in
-                    
-                    guard let dataNotNil = response?.data else { return print("Data is nil") }
-                    let jsonObject = try? JSONSerialization.jsonObject(with: dataNotNil, options: JSONSerialization.ReadingOptions.allowFragments)
-                    print(jsonObject)
-                    let messages = try? JSONDecoder().decode([Message].self, from: dataNotNil)
-                    #warning("Implement this using Future and try to add a Future chain that performs all the operations")
-                }
+            .flatMap(self.futureMessageResponse)
+            .flatMap(self.futureMessageResult).runAsync { result in
+            // Notify Result got
         }
-        
-        
-    }
+       }
+
 }
