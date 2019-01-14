@@ -17,7 +17,6 @@
 		8FD2280A21CBF62900834320 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2280921CBF62900834320 /* Constants.swift */; };
 		D4189153216A40E200882BFC /* NewMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4189152216A40E200882BFC /* NewMessageVC.swift */; };
 		D4189157216A415C00882BFC /* MessageListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4189156216A415C00882BFC /* MessageListVC.swift */; };
-		D418915A216A42DF00882BFC /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4189159216A42DF00882BFC /* NetworkClient.swift */; };
 		D41B028521E13A1900EC543F /* DeleteMessageResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41B028421E13A1900EC543F /* DeleteMessageResource.swift */; };
 		D4295A3121DF77DA00577B86 /* SendMessageResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4295A3021DF77DA00577B86 /* SendMessageResource.swift */; };
 		D4295A3321DF7F9200577B86 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4295A3221DF7F9200577B86 /* Config.swift */; };
@@ -38,6 +37,7 @@
 		D4795C2A216928970079EC7A /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC03D200624A0008D85C8 /* Future.swift */; };
 		D4795C2B2169289C0079EC7A /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49772A620A8A9F9009B9D0E /* NetworkSession.swift */; };
 		D4EEA09E21DCE5AE00B385CC /* MessageListResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EEA09D21DCE5AE00B385CC /* MessageListResource.swift */; };
+		D4FE5F4521ECE9B800D149C7 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4189159216A42DF00882BFC /* NetworkClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +192,7 @@
 		8F0EC02E200600D2008D85C8 /* HttpNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				D4189159216A42DF00882BFC /* NetworkClient.swift */,
 				D49772A520A8A9DE009B9D0E /* Session */,
 				8F1A5B2C20078689005997F6 /* Commons */,
 				8F0EC03C20062023008D85C8 /* Future */,
@@ -304,7 +305,6 @@
 			isa = PBXGroup;
 			children = (
 				D4EEA09C21DCE54D00B385CC /* ApiResources */,
-				D4189159216A42DF00882BFC /* NetworkClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -487,7 +487,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4189157216A415C00882BFC /* MessageListVC.swift in Sources */,
-				D418915A216A42DF00882BFC /* NetworkClient.swift in Sources */,
 				8FC5654D21E648DB0036D356 /* HomeWireframe.swift in Sources */,
 				D44A637F21E4AF9F00FEB5AB /* MessageListWireframe.swift in Sources */,
 				D41B028521E13A1900EC543F /* DeleteMessageResource.swift in Sources */,
@@ -525,6 +524,7 @@
 				D4795C282169288D0079EC7A /* ApiResource.swift in Sources */,
 				D4795C29216928910079EC7A /* ApiResponse.swift in Sources */,
 				D4795C25216928810079EC7A /* LogLevel.swift in Sources */,
+				D4FE5F4521ECE9B800D149C7 /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

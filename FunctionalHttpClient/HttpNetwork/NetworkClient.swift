@@ -7,27 +7,26 @@
 //
 
 import Foundation
-import FunctionalHttpClient
 
-protocol NetworkClientInput {
-    var networkClientOutput: NetworkClientOutput? { get set }
-    func performRequest<Output>(for resource: ApiResource, type: Output.Type) where Output: Codable
+public protocol NetworkClientInput {
+     var networkClientOutput: NetworkClientOutput? { get set }
+     func performRequest<Output>(for resource: ApiResource, type: Output.Type) where Output: Codable
 }
 
-protocol NetworkClientOutput {
+public protocol NetworkClientOutput {
     func outputResult<OutputResult>(_ outputResult: OutputResult)
     func error<ServiceError>(_ error: ServiceError)
 }
 
-enum ServiceError: Error {
+public enum ServiceError: Error {
     case invalidResponse
 }
 
-struct NetworkClient {
-    let networkSession: NetworkSession
-    var networkClientOutput: NetworkClientOutput?
+public class NetworkClient {
+    public let networkSession: NetworkSession
+    public var networkClientOutput: NetworkClientOutput?
     
-    init(networkSession: NetworkSession) {
+    public init(networkSession: NetworkSession) {
         self.networkSession = networkSession
     }
     
@@ -47,7 +46,7 @@ struct NetworkClient {
 }
 
 extension NetworkClient: NetworkClientInput {
-    func performRequest<Output>(for resource: ApiResource, type: Output.Type) where Output: Codable {
+    public func performRequest<Output>(for resource: ApiResource, type: Output.Type) where Output: Codable {
             Future.pure(resource)
                 .flatMap(self.futureResponse)
                 .flatMap(self.futureResult)

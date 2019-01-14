@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FunctionalHttpClient
 
 protocol MessageListServiceInput {
     var networkCient: NetworkClientInput { get set }
