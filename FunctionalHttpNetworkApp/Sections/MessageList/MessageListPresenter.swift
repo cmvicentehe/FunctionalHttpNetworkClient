@@ -35,5 +35,3 @@ extension MessageListPresenter: MessageListPresenterInput {
         self.interactor.retrieveMessages()
     }
 }
-
-extension MessageListPresenter: MessageListInteractorOutput {}

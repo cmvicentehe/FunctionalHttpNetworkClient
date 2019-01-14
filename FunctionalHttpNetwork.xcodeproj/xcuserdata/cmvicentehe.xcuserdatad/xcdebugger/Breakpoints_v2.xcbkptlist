@@ -35,53 +35,5 @@
             landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FunctionalHttpNetworkApp/Network/NetworkClient.swift"
-            timestampString = "568660831.146209"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "performMessageListRequest()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FunctionalHttpNetworkApp.NetworkClient.performMessageListRequest() -&gt; ()"
-                  moduleName = "FunctionalHttpNetworkApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/cmvicentehe/Proyectos%20iOS/FunctionalHttpNetwork/FunctionalHttpNetworkApp/Network/NetworkClient.swift"
-                  timestampString = "568660831.332073"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "104">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;FunctionalHttpClient.ApiResponseProtocol&gt;) -&gt; () in FunctionalHttpNetworkApp.NetworkClient.performMessageListRequest() -&gt; ()"
-                  moduleName = "FunctionalHttpNetworkApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/cmvicentehe/Proyectos%20iOS/FunctionalHttpNetwork/FunctionalHttpNetworkApp/Network/NetworkClient.swift"
-                  timestampString = "568660831.337121"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "23">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

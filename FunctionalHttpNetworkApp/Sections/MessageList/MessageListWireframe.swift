@@ -25,8 +25,9 @@ extension MessageListWireframe: MessageListWireframeInput {
         }
         
         let networkSession = NetworkSession()
-        let networkClient = NetworkClient(sessionWrapper: networkSession)
+        var networkClient = NetworkClient(networkSession: networkSession)
         let service = MessageListService(networkCient: networkClient)
+        networkClient.networkClientOutput = service
         let interactor = MessageListInteractor(service: service)
         
         let presenter = MessageListPresenter(view: messageListVC,

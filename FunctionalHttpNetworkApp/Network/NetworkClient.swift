@@ -10,39 +10,54 @@ import Foundation
 import FunctionalHttpClient
 
 protocol NetworkClientInput {
-    func performMessageListRequest()
+    var networkClientOutput: NetworkClientOutput? { get set }
+    func performRequest<Output>(for resource: ApiResource, type: Output.Type) where Output: Codable
 }
 
-enum MessageListServiceError: Error {
+protocol NetworkClientOutput {
+    func outputResult<OutputResult>(_ outputResult: OutputResult)
+    func error<ServiceError>(_ error: ServiceError)
+}
+
+enum ServiceError: Error {
     case invalidResponse
 }
 
 struct NetworkClient {
-    let sessionWrapper: NetworkSession
+    let networkSession: NetworkSession
+    var networkClientOutput: NetworkClientOutput?
     
-    private func futureMessageResponse(for apiResource: ApiResource) -> Future<ApiResponseProtocol?> {
-        return Future.async(self.sessionWrapper.performRequest(for: apiResource))
+    init(networkSession: NetworkSession) {
+        self.networkSession = networkSession
     }
     
-    private func futureMessageResult(for response: ApiResponseProtocol?) -> Future<Result<[Message], MessageListServiceError>> {
+    private func futureResponse(for apiResource: ApiResource) -> Future<ApiResponseProtocol?> {
+        return Future.async(self.networkSession.performRequest(for: apiResource))
+    }
+    
+    private func futureResult<Output: Codable>(for response: ApiResponseProtocol?) -> Future<Result<Output, ServiceError>> {
         guard let dataNotNil = response?.data,
-        let messages = try? JSONDecoder().decode([Message].self, from: dataNotNil) else {
+        let output = try? JSONDecoder().decode(Output.self, from: dataNotNil) else {
             print("Data is nil")
-            return  Future.pure(Result.error(MessageListServiceError.invalidResponse))
+            return  Future.pure(Result.error(ServiceError.invalidResponse))
         }
-       
-        return Future.pure(Result.success(messages))
+
+        return Future.pure(Result.success(output))
     }
 }
 
 extension NetworkClient: NetworkClientInput {
-    func performMessageListRequest() {
-        let messageListResource = MessageListResource(endPoint: Constants.Services.Endpoints.messages)
-        Future.pure(messageListResource)
-            .flatMap(self.futureMessageResponse)
-            .flatMap(self.futureMessageResult).runAsync { result in
-            // Notify Result got
+    func performRequest<Output>(for resource: ApiResource, type: Output.Type) where Output: Codable {
+            Future.pure(resource)
+                .flatMap(self.futureResponse)
+                .flatMap(self.futureResult)
+                .runAsync { (result:Result<Output, ServiceError>)  in
+                    switch result {
+                    case .success(let value):
+                        self.networkClientOutput?.outputResult(value)
+                    case .error(let error):
+                        self.networkClientOutput?.error(error)
+                    }
+            }
         }
-       }
-
 }

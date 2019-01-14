@@ -13,9 +13,6 @@ protocol MessageListServiceInput {
     func retrieveMssages()
 }
 
-protocol MessageListServiceOutput {
-    
-}
 
 struct MessageListService {
     var networkCient: NetworkClientInput
@@ -23,6 +20,18 @@ struct MessageListService {
 
 extension MessageListService: MessageListServiceInput {
     func retrieveMssages() {
-        self.networkCient.performMessageListRequest()
+        let messageListResource = MessageListResource(endPoint: Constants.Services.Endpoints.messages)
+        let type = [Message].self
+        self.networkCient.performRequest(for: messageListResource, type: type)
+    }
+}
+
+extension MessageListService: NetworkClientOutput {
+    func outputResult<OutputResult>(_ outputResult: OutputResult) {
+        
+    }
+    
+    func error<ServiceError>(_ error: ServiceError) {
+        
     }
 }

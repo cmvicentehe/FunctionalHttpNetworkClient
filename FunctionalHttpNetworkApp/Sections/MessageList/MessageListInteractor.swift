@@ -13,7 +13,10 @@ protocol MessageListInteractorInput {
     func retrieveMessages()
 }
 
-protocol MessageListInteractorOutput {}
+protocol MessageListInteractorOutput {
+    func messages(messages: [Message])
+    func error<ServiceError>(_ error: ServiceError)
+}
 
 class MessageListInteractor {
     var service: MessageListServiceInput
@@ -26,5 +29,15 @@ class MessageListInteractor {
 extension MessageListInteractor: MessageListInteractorInput {
     func retrieveMessages() {
         self.service.retrieveMssages()
+    }
+}
+
+extension MessageListInteractor: MessageListInteractorOutput {
+    func messages(messages: [Message]) {
+        
+    }
+    
+    func error<ServiceError>(_ error: ServiceError) {
+        
     }
 }
