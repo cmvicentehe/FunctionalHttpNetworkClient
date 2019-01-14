@@ -19,7 +19,8 @@ public struct NetworkSession {
     let urlSession: URLSession
     let logLevel: LogLevel
     
-    public init(urlSession: URLSession = URLSession(configuration: URLSessionConfiguration.default), logLevel: LogLevel = .debug) {
+    public init(urlSession: URLSession = URLSession(configuration: URLSessionConfiguration.default),
+                logLevel: LogLevel = .debug) {
         self.urlSession = urlSession
         self.logLevel = logLevel
     }
@@ -50,24 +51,17 @@ public struct NetworkSession {
         switch statusCode {
         case 100...199:
             status = .info
-            break
         case 200...299:
             status = .success
-            break
         case 300...399:
             status = .redirection
-            break
         case 400...499:
             status = .clientError
-            break
         case 500...599:
             status = .serverError
-            break
         default:
             status = .unknown
-            break
         }
-            
         return status
     }
 }
@@ -94,7 +88,7 @@ extension NetworkSession: NetworkSessionInput {
         }
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
-        var apiResponse: ApiResponseProtocol? = nil
+        var apiResponse: ApiResponseProtocol?
         self.urlSession.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             guard let responseNotNil = response as? HTTPURLResponse else {
                 dispatchGroup.leave()

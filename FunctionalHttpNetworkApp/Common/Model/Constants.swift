@@ -28,10 +28,11 @@ struct Constants {
         struct Storyboards {
             static let main = "Main"
         }
-        struct viewControllers {
+        struct ViewControllers {
             static let homeVC = "HomeVC"
             static let messageListVC = "MessageListVC"
             static let newMessageVC = "NewMessageVC"
         }
     }
+
 }

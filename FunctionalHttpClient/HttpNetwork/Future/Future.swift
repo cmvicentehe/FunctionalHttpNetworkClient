@@ -8,9 +8,9 @@
 
 import Foundation
 
-public typealias Task<Input> = (DispatchQueue, DispatchGroup, @escaping(Input) -> ()) -> ()
+public typealias Task<Input> = (DispatchQueue, DispatchGroup, @escaping(Input) -> Void) -> Void
 
-public struct Future<Input>  {
+public struct Future<Input> {
     let task: Task<Input>
     
     /******************************* ASYNC *******************************/
@@ -24,13 +24,15 @@ public struct Future<Input>  {
         return Future(task: task)
     }
     
-    public func runAsync(_ queue: DispatchQueue = DispatchQueue.global(), _ group: DispatchGroup = DispatchGroup(), _ continuation: @escaping (Input) -> ()) {
+    public func runAsync(_ queue: DispatchQueue = DispatchQueue.global(),
+                         _ group: DispatchGroup = DispatchGroup(),
+                         _ continuation: @escaping (Input) -> Void) {
         self.task(queue, group, continuation)
     }
     
     /******************************* SYNC *******************************/
     public static func sync(_ function: @autoclosure @escaping () -> Input) -> Future<Input> {
-        let task: Task<Input> = { (_ , _, continuation) in
+        let task: Task<Input> = { (_, _, continuation) in
             continuation(function())
         }
         
@@ -40,8 +42,7 @@ public struct Future<Input>  {
     public func runSync() -> Input? {
         let queue: DispatchQueue = DispatchQueue.global()
         let group: DispatchGroup = DispatchGroup()
-        var inputResult: Input? = nil
-        
+        var inputResult: Input?
         self.task(queue, group) { input in
             inputResult = input
         }
@@ -83,8 +84,8 @@ public struct Future<Input>  {
     
     public func apply<Output>(_ future: Future<(Input) -> Output>) -> Future<Output> {
         let task: Task<Output> = { (queue, _, continuation) in
-            var inputResult: Input? = nil
-            var inputToOutputResult: ((Input) -> Output)? = nil
+            var inputResult: Input?
+            var inputToOutputResult: ((Input) -> Output)?
             let group: DispatchGroup = DispatchGroup()
             
             self.task(queue, group) { input in
@@ -95,13 +96,12 @@ public struct Future<Input>  {
             }
             
             if let inputToOutputNotnil = inputToOutputResult,
-                let inputNotNil = inputResult  {
+                let inputNotNil = inputResult {
                 continuation(inputToOutputNotnil(inputNotNil))
                 group.wait()
             }
         }
         
         return Future<Output>(task: task)
-    }
-    
+    }    
 }

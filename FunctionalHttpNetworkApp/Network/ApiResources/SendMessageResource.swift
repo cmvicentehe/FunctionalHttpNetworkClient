@@ -13,14 +13,12 @@ struct SendMessageResource {
     let message: Message
     var endPoint: String
     var method: FunctionalHttpClient.Method {
-        get { return .post }
+        return .post
     }
     
-    var bodyParameters: [AnyHashable : Any]? {
-        get {
-            return [Constants.Keys.username: self.message.username,
-                    Constants.Keys.content : self.message.content]
-        }
+    var bodyParameters: [AnyHashable: Any]? {
+        return [Constants.Keys.username: self.message.username,
+                    Constants.Keys.content: self.message.content]
     }
     
 }

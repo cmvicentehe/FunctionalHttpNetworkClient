@@ -9,7 +9,6 @@
 import UIKit
 
 class NewMessageVC: UIViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

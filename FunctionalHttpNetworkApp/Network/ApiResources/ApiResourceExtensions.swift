@@ -11,13 +11,11 @@ import FunctionalHttpClient
 
 extension ApiResource {
     var urlComponents: URLComponents {
-        get {
-            var urlComponents = URLComponents()
-            let scheme = Constants.Services.scheme
-            urlComponents.scheme = scheme
-            urlComponents.path = self.endPoint
-            urlComponents.host = Config.hostUrl
-            return urlComponents
-        }
+        var urlComponents = URLComponents()
+        let scheme = Constants.Services.scheme
+        urlComponents.scheme = scheme
+        urlComponents.path = self.endPoint
+        urlComponents.host = Config.hostUrl
+        return urlComponents
     }
 }

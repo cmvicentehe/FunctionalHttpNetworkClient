@@ -9,7 +9,13 @@
 import Foundation
 
 struct Message {
-    let id: String
+    enum CodingKeys: String, CodingKey {
+        case messageId = "id"
+        case username
+        case content
+        case date
+    }
+    let messageId: String
     let username: String
     let content: String
     let date: String

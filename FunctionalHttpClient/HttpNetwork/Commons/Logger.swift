@@ -25,7 +25,7 @@ struct Logger {
     init() {
         self.init(logLevel: .debug)
     }
-    // TODO: Search for the best option
+    #warning("TODO: Search for the best option")
     func logDebug(message: String) {
         self.log(with: .debug, message: message)
     }
@@ -42,19 +42,16 @@ struct Logger {
         switch self.logLevel {
         case .debug:
             print("------> \(kind) --- \(message)")
-            break
         case .info:
             print("------> \(kind) --- \(message)")
-            break
         case .error:
             let file = #file
             let function = #function
             let line = #line
             print("------> \(kind): in \(file)")
             print("\t\t ---> Calling to \(function): at line \(line)")
-            break
         case .none:
-            break
+            print("")
         }
     }
 }

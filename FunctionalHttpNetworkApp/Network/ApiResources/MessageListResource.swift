@@ -12,7 +12,7 @@ import FunctionalHttpClient
 struct MessageListResource {
     var endPoint: String
     var method: FunctionalHttpClient.Method {
-        get {  return .get }
+       return .get
     }
 }
 

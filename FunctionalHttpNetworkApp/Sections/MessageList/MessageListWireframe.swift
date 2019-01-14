@@ -18,8 +18,12 @@ struct MessageListWireframe {
 
 extension MessageListWireframe: MessageListWireframeInput {
     func showMessageListVC() -> MessageListVC? {
-        
-        guard let messageListVC =  UIStoryboard(name: Constants.Identifiers.Storyboards.main, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Identifiers.viewControllers.messageListVC) as? MessageListVC else {
+        guard let messageListVC =  UIStoryboard(
+            name: Constants.Identifiers.Storyboards.main,
+            bundle: Bundle.main)
+            .instantiateViewController(
+                withIdentifier: Constants.Identifiers.ViewControllers.messageListVC)
+            as? MessageListVC else {
             print("Invalid message list view controller")
             return nil
         }
@@ -29,7 +33,6 @@ extension MessageListWireframe: MessageListWireframeInput {
         let service = MessageListService(networkCient: networkClient)
         networkClient.networkClientOutput = service
         let interactor = MessageListInteractor(service: service)
-        
         let presenter = MessageListPresenter(view: messageListVC,
                                              interactor: interactor,
                                              wireframe: self)

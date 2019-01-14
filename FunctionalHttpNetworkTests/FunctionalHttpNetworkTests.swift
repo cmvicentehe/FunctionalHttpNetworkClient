@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import FunctionalHttpNetwork
+@testable import FunctionalHttpClient
 
 class FunctionalHttpNetworkTests: XCTestCase {
     

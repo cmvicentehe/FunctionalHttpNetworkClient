@@ -34,10 +34,8 @@ extension MessageListInteractor: MessageListInteractorInput {
 
 extension MessageListInteractor: MessageListInteractorOutput {
     func messages(messages: [Message]) {
-        
     }
     
     func error<ServiceError>(_ error: ServiceError) {
-        
     }
 }

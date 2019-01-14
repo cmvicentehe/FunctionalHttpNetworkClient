@@ -34,7 +34,9 @@ public class NetworkClient {
         return Future.async(self.networkSession.performRequest(for: apiResource))
     }
     
-    private func futureResult<Output: Codable>(for response: ApiResponseProtocol?) -> Future<Result<Output, ServiceError>> {
+    private func futureResult<Output: Codable>
+        (for response: ApiResponseProtocol?)
+        -> Future<Result<Output, ServiceError>> {
         guard let dataNotNil = response?.data,
         let output = try? JSONDecoder().decode(Output.self, from: dataNotNil) else {
             print("Data is nil")
@@ -50,7 +52,7 @@ extension NetworkClient: NetworkClientInput {
             Future.pure(resource)
                 .flatMap(self.futureResponse)
                 .flatMap(self.futureResult)
-                .runAsync { (result:Result<Output, ServiceError>)  in
+                .runAsync { (result: Result<Output, ServiceError>) in
                     switch result {
                     case .success(let value):
                         self.networkClientOutput?.outputResult(value)

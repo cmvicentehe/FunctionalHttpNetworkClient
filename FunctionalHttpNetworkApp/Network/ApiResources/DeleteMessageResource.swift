@@ -12,7 +12,7 @@ import FunctionalHttpClient
 struct DeleteMessageResource {
     var endPoint: String
     var method: FunctionalHttpClient.Method {
-        get { return .delete }
+       return .delete 
     }
 }
 

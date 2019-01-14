@@ -10,7 +10,6 @@ import UIKit
 
 protocol HomeWireframeInput {
    func showTabBar()
-    
 }
 
 struct HomeWireframe {
@@ -19,13 +18,19 @@ struct HomeWireframe {
 
 extension HomeWireframe: HomeWireframeInput {
     func showTabBar() {
-        guard let homeVC: HomeVC = UIStoryboard(name: Constants.Identifiers.Storyboards.main, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Identifiers.viewControllers.homeVC) as? HomeVC else { return print("Invalid home view controller ") }
+        guard let homeVC: HomeVC = UIStoryboard(
+            name: Constants.Identifiers.Storyboards.main,
+            bundle: Bundle.main)
+            .instantiateViewController(withIdentifier: Constants.Identifiers.ViewControllers.homeVC)
+            as? HomeVC else { return print("Invalid home view controller ") }
         
         let messageListWireframe = MessageListWireframe()
-       
-        
         guard let messagesVC = messageListWireframe.showMessageListVC(),
-        let newMessageVC = UIStoryboard(name: Constants.Identifiers.Storyboards.main, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Identifiers.viewControllers.newMessageVC) as? NewMessageVC
+        let newMessageVC = UIStoryboard(
+            name: Constants.Identifiers.Storyboards.main,
+            bundle: Bundle.main)
+            .instantiateViewController(withIdentifier: Constants.Identifiers.ViewControllers.newMessageVC)
+            as? NewMessageVC
         else { return print("Invalid view controller ") }
         
         homeVC.viewControllers = [messagesVC, newMessageVC]

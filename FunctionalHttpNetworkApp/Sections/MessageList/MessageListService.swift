@@ -14,7 +14,6 @@ protocol MessageListServiceInput {
     func retrieveMssages()
 }
 
-
 struct MessageListService {
     var networkCient: NetworkClientInput
 }
@@ -29,10 +28,8 @@ extension MessageListService: MessageListServiceInput {
 
 extension MessageListService: NetworkClientOutput {
     func outputResult<OutputResult>(_ outputResult: OutputResult) {
-        
     }
     
     func error<ServiceError>(_ error: ServiceError) {
-        
     }
 }
