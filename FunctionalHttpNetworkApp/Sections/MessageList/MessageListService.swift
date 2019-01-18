@@ -10,26 +10,40 @@ import Foundation
 import FunctionalHttpClient
 
 protocol MessageListServiceInput {
-    var networkCient: NetworkClientInput { get set }
+    var networkClient: NetworkClientInput { get set }
+    var interactor: MessageListServiceOutput? { get set }
     func retrieveMssages()
 }
 
-struct MessageListService {
-    var networkCient: NetworkClientInput
+protocol MessageListServiceOutput: class {
+    func messages(_ messages: [Message])
+    func error<ServiceError>(_ error: ServiceError)
+}
+
+class MessageListService {
+    var networkClient: NetworkClientInput
+    weak var interactor: MessageListServiceOutput?
+    
+    init(networkClient: NetworkClientInput) {
+        self.networkClient = networkClient
+    }
 }
 
 extension MessageListService: MessageListServiceInput {
     func retrieveMssages() {
         let messageListResource = MessageListResource(endPoint: Constants.Services.Endpoints.messages)
         let type = [Message].self
-        self.networkCient.performRequest(for: messageListResource, type: type)
+        self.networkClient.performRequest(for: messageListResource, type: type)
     }
 }
 
 extension MessageListService: NetworkClientOutput {
     func outputResult<OutputResult>(_ outputResult: OutputResult) {
+        guard let messages = outputResult as? [Message] else { return print("Output result is not of expected type") }
+        self.interactor?.messages(messages)
     }
     
     func error<ServiceError>(_ error: ServiceError) {
+        self.interactor?.error(error)
     }
 }

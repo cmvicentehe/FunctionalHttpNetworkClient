@@ -33,6 +33,9 @@
                         <viewLayoutGuide key="safeArea" id="iCL-zq-4Oc"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Message list" image="message_list" id="hiH-6H-yV3"/>
+                    <connections>
+                        <outlet property="messageList" destination="JQN-ik-XXd" id="fyb-xR-RsL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aZP-f8-qHr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

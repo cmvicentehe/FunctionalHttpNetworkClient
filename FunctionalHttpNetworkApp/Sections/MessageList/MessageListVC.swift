@@ -9,12 +9,23 @@
 import UIKit
 
 class MessageListVC: UIViewController {
+    @IBOutlet weak var messageList: UITableView!
     var presenter: MessageListPresenterInput?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter?.viewDidLoad()
+        self.presenter?.viewDidLoad(with: self.messageList)
     }
 }
 
-extension MessageListVC: MessageListUI {}
+extension MessageListVC: MessageListUI {
+    func showMessages() {
+        DispatchQueue.main.async {
+             self.messageList.reloadData()
+        }
+    }
+    
+    func show<ServiceError>(error: ServiceError) {
+        #warning("Implement this method")
+    }
+}

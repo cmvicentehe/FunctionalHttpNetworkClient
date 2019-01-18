@@ -23,10 +23,10 @@ public enum ServiceError: Error {
 }
 
 public class NetworkClient {
-    public let networkSession: NetworkSession
+    public let networkSession: NetworkSessionInput
     public var networkClientOutput: NetworkClientOutput?
     
-    public init(networkSession: NetworkSession) {
+    public init(networkSession: NetworkSessionInput) {
         self.networkSession = networkSession
     }
     

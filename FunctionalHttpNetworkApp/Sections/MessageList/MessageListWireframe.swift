@@ -27,16 +27,19 @@ extension MessageListWireframe: MessageListWireframeInput {
             print("Invalid message list view controller")
             return nil
         }
-        
+        let tableViewViewModel = TableViewViewModel<Message>()
         let networkSession = NetworkSession()
         let networkClient = NetworkClient(networkSession: networkSession)
-        let service = MessageListService(networkCient: networkClient)
-        networkClient.networkClientOutput = service
+        let service = MessageListService(networkClient: networkClient)
         let interactor = MessageListInteractor(service: service)
         let presenter = MessageListPresenter(view: messageListVC,
                                              interactor: interactor,
-                                             wireframe: self)
-
+                                             wireframe: self,
+                                             tableViewViewModel: tableViewViewModel)
+        networkClient.networkClientOutput = service
+        interactor.presenter = presenter
+        presenter.interactor = interactor
+        service.interactor = interactor
         messageListVC.presenter = presenter
         
         return messageListVC
