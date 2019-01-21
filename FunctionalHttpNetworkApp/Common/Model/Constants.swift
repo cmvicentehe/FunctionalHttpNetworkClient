@@ -29,7 +29,7 @@ struct Constants {
             static let main = "Main"
         }
         struct Cells {
-            static let main = "MessageCell"
+            static let messageCell = "MessageCell"
         }
         struct ViewControllers {
             static let homeVC = "HomeVC"

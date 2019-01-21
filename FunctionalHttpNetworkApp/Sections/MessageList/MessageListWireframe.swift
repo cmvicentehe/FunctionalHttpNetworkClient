@@ -27,7 +27,7 @@ extension MessageListWireframe: MessageListWireframeInput {
             print("Invalid message list view controller")
             return nil
         }
-        let tableViewViewModel = TableViewViewModel<Message>()
+        let tableViewViewModel = MessagesTableViewViewModel()
         let networkSession = NetworkSession()
         let networkClient = NetworkClient(networkSession: networkSession)
         let service = MessageListService(networkClient: networkClient)

@@ -26,12 +26,12 @@ class MessageListPresenter {
     weak var view: MessageListUI?
     var interactor: MessageListInteractorInput
     var wireframe: MessageListWireframeInput
-    var tableViewViewModel: TableViewViewModel<Message>
+    var tableViewViewModel: MessagesTableViewViewModel
     
     init(view: MessageListUI,
          interactor: MessageListInteractorInput,
          wireframe: MessageListWireframeInput,
-         tableViewViewModel: TableViewViewModel<Message>) {
+         tableViewViewModel: MessagesTableViewViewModel) {
         self.view = view
         self.interactor = interactor
         self.wireframe = wireframe
@@ -48,7 +48,7 @@ extension MessageListPresenter: MessageListPresenterInput {
 
 extension MessageListPresenter: MessageListInteractorOutput {
     func messages(_ messages: [Message]) {
-        self.tableViewViewModel.update(items: messages)
+        self.tableViewViewModel.items = messages
         self.view?.showMessages()
     }
     

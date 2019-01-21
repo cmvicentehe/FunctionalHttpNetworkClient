@@ -15,6 +15,8 @@
 		8F0EC038200600D3008D85C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC032200600D2008D85C8 /* AppDelegate.swift */; };
 		8FC5654D21E648DB0036D356 /* HomeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5654C21E648DB0036D356 /* HomeWireframe.swift */; };
 		8FD2280A21CBF62900834320 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2280921CBF62900834320 /* Constants.swift */; };
+		8FE20F2221F5AF3F0077A94B /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE20F2121F5AF3F0077A94B /* MessageTableViewCell.swift */; };
+		8FE20F2621F611330077A94B /* MessagesTableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE20F2521F611330077A94B /* MessagesTableViewViewModel.swift */; };
 		8FEAAE0421EF8F8E00602084 /* TableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEAAE0321EF8F8E00602084 /* TableViewViewModel.swift */; };
 		D4189153216A40E200882BFC /* NewMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4189152216A40E200882BFC /* NewMessageVC.swift */; };
 		D4189157216A415C00882BFC /* MessageListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4189156216A415C00882BFC /* MessageListVC.swift */; };
@@ -91,6 +93,8 @@
 		8F9D577520AC29840032BE69 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		8FC5654C21E648DB0036D356 /* HomeWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWireframe.swift; sourceTree = "<group>"; };
 		8FD2280921CBF62900834320 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8FE20F2121F5AF3F0077A94B /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		8FE20F2521F611330077A94B /* MessagesTableViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewViewModel.swift; sourceTree = "<group>"; };
 		8FEAAE0321EF8F8E00602084 /* TableViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewViewModel.swift; sourceTree = "<group>"; };
 		D4189150216A094300882BFC /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		D4189152216A40E200882BFC /* NewMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageVC.swift; sourceTree = "<group>"; };
@@ -303,11 +307,13 @@
 		D4189155216A413000882BFC /* MessageList */ = {
 			isa = PBXGroup;
 			children = (
-				D4189156216A415C00882BFC /* MessageListVC.swift */,
-				D44A637A21E4AF7600FEB5AB /* MessageListPresenter.swift */,
 				D44A637C21E4AF8B00FEB5AB /* MessageListInteractor.swift */,
-				D44A637E21E4AF9F00FEB5AB /* MessageListWireframe.swift */,
+				D44A637A21E4AF7600FEB5AB /* MessageListPresenter.swift */,
 				D44A638021E4BFAD00FEB5AB /* MessageListService.swift */,
+				D4189156216A415C00882BFC /* MessageListVC.swift */,
+				D44A637E21E4AF9F00FEB5AB /* MessageListWireframe.swift */,
+				8FE20F2521F611330077A94B /* MessagesTableViewViewModel.swift */,
+				8FE20F2121F5AF3F0077A94B /* MessageTableViewCell.swift */,
 			);
 			path = MessageList;
 			sourceTree = "<group>";
@@ -522,6 +528,7 @@
 				8FC5654D21E648DB0036D356 /* HomeWireframe.swift in Sources */,
 				D44A637F21E4AF9F00FEB5AB /* MessageListWireframe.swift in Sources */,
 				D41B028521E13A1900EC543F /* DeleteMessageResource.swift in Sources */,
+				8FE20F2621F611330077A94B /* MessagesTableViewViewModel.swift in Sources */,
 				D4295A3321DF7F9200577B86 /* Config.swift in Sources */,
 				D44A638121E4BFAD00FEB5AB /* MessageListService.swift in Sources */,
 				D44A637D21E4AF8B00FEB5AB /* MessageListInteractor.swift in Sources */,
@@ -529,6 +536,7 @@
 				D4295A3121DF77DA00577B86 /* SendMessageResource.swift in Sources */,
 				8FD2280A21CBF62900834320 /* Constants.swift in Sources */,
 				D4295A3721DF82C300577B86 /* Message.swift in Sources */,
+				8FE20F2221F5AF3F0077A94B /* MessageTableViewCell.swift in Sources */,
 				D4295A3521DF80B600577B86 /* ApiResourceExtensions.swift in Sources */,
 				D44A637B21E4AF7600FEB5AB /* MessageListPresenter.swift in Sources */,
 				D4189153216A40E200882BFC /* NewMessageVC.swift in Sources */,
