@@ -22,29 +22,19 @@ class MessageTableViewCell: UITableViewCell {
         self.content.text = nil
         self.date.text = nil
     }
-
-    private func formate(date: String,
-                         using resultDateFormatter: DateFormatter) -> String {
-        let currentDateFormatter = DateFormatter()
-        #warning("TODO: Modify this format from server")
-        currentDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        guard let dateNotNil = currentDateFormatter.date(from: date) else {
-            print("Invalid data conversion")
-            return ""
-        }
-
-        return resultDateFormatter.string(from: dateNotNil)
-    }
 }
 
 extension MessageTableViewCell: TableViewCell {
     func bind(item: Message) {
-        let resultDateFormatter = DateFormatter()
-        resultDateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+
         self.username.text = item.username
         self.content.text = item.content
-        #warning("TODO: Create static date tools that manages dates")
-        self.date.text = self.formate(date: item.date,
-                                      using: resultDateFormatter)
+
+        guard let serverDate = DateTools.convertDateStringToServerDateFormat(item.date) else {
+            print("Invalid date format")
+            self.date.text = ""
+            return
+        }
+        self.date.text = DateTools.convertDateToAppDateFormat(serverDate)
     }
 }
