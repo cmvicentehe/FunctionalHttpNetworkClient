@@ -19,7 +19,11 @@ public protocol NetworkClientOutput {
 }
 
 public enum ServiceError: Error {
-    case invalidResponse
+    case info
+    case clientError
+    case serverError
+    case redirection
+    case unknownError
 }
 
 public class NetworkClient {
@@ -38,12 +42,40 @@ public class NetworkClient {
         (for response: ApiResponseProtocol?)
         -> Future<Result<Output, ServiceError>> {
         guard let dataNotNil = response?.data,
-        let output = try? JSONDecoder().decode(Output.self, from: dataNotNil) else {
-            print("Data is nil")
-            return  Future.pure(Result.error(ServiceError.invalidResponse))
+            let output = try? JSONDecoder().decode(Output.self, from: dataNotNil) else {
+            return self.manageHttpStatus(for: response)
         }
 
         return Future.pure(Result.success(output))
+    }
+
+    private func manageHttpStatus<Output: Codable>
+        (for response: ApiResponseProtocol?) -> Future<Result<Output, ServiceError>> {
+        guard let responseNotNil = response else { return Future.pure(Result.error(.unknownError)) }
+
+        let status = responseNotNil.status
+        switch status {
+        case .info:
+            #warning("TODO: Info status should be considerated an error?")
+            return Future.pure(Result.error(.info))
+        case .success:
+
+             #warning("TODO: Important! Delete force cast and search for a mechanism without using generics")
+            // swiftlint:disable force_cast
+            let emptyResponse: Output = EmptyResponse() as! Output
+            let result = Result<Output, ServiceError>.success(emptyResponse)
+            let future = Future.pure(result)
+             // swiftlint:enable force_cast
+            return future
+        case .clientError:
+            return Future.pure(Result.error(.clientError))
+        case .redirection:
+            return Future.pure(Result.error(.redirection))
+        case .serverError:
+           return Future.pure(Result.error(.serverError))
+        case .unknown:
+            return Future.pure(Result.error(.unknownError))
+        }
     }
 }
 

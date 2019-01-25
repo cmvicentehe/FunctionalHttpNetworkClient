@@ -26,7 +26,6 @@ class MessageTableViewCell: UITableViewCell {
 
 extension MessageTableViewCell: TableViewCell {
     func bind(item: Message) {
-
         self.username.text = item.username
         self.content.text = item.content
 

@@ -19,18 +19,15 @@ struct HomeWireframe {
 extension HomeWireframe: HomeWireframeInput {
     func showTabBar() {
         guard let homeVC: HomeVC = UIStoryboard(
-            name: Constants.Identifiers.Storyboards.main,
+            name: Constants.Identifiers.Storyboards.home,
             bundle: Bundle.main)
             .instantiateViewController(withIdentifier: Constants.Identifiers.ViewControllers.homeVC)
             as? HomeVC else { return print("Invalid home view controller ") }
         
         let messageListWireframe = MessageListWireframe()
-        guard let messagesVC = messageListWireframe.showMessageListVC(),
-        let newMessageVC = UIStoryboard(
-            name: Constants.Identifiers.Storyboards.main,
-            bundle: Bundle.main)
-            .instantiateViewController(withIdentifier: Constants.Identifiers.ViewControllers.newMessageVC)
-            as? NewMessageVC
+        let newMessageWireframe = NewMessageWireframe()
+        guard let messagesVC = messageListWireframe.showMessageList(),
+            let newMessageVC = newMessageWireframe.showNewMessage()
         else { return print("Invalid view controller ") }
         
         homeVC.viewControllers = [messagesVC, newMessageVC]

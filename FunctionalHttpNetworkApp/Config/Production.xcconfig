@@ -1,0 +1,13 @@
+//
+//  Config.xcconfig
+//  FunctionalHttpNetwork
+//
+//  Created by Carlos Manuel Vicente Herrero on 07/10/2018.
+//  Copyright © 2018 cmvicentehe. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+SCHEME = https
+HOST_URL = easy-test-api-staging.vapor.cloud

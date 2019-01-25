@@ -8,12 +8,12 @@
 
 import Foundation
 
-public enum Method {
-    case get
-    case post
-    case put
-    case delete
-    case patch
+public enum Method: String {
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+    case delete = "DELETE"
+    case patch = "PATCH"
 }
 
 public protocol ApiResource {

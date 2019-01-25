@@ -10,7 +10,6 @@ import Foundation
 
 struct Constants {
     struct Services {
-        static let scheme = "https"
         struct Endpoints {
             static let messages = "/messages"
             static let sendMessage = "/send"
@@ -19,14 +18,18 @@ struct Constants {
     }
     
     struct Keys {
+        static let scheme = "SCHEME"
         static let hostUrl = "HOST_URL"
+        static let port = "PORT"
         static let username = "username"
         static let content = "content"
+        static let contentType = "Content-Type"
+        static let applicationJson = "application/json"
     }
     
     struct Identifiers {
         struct Storyboards {
-            static let main = "Main"
+            static let home = "Home"
         }
         struct Cells {
             static let messageCell = "MessageCell"

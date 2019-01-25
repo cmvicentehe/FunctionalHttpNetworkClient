@@ -68,17 +68,23 @@ public struct NetworkSession {
 
 extension NetworkSession: NetworkSessionInput {
     // MARK: Request
-    
     public func buildURLRequest(from resource: ApiResource) -> URLRequest? {
         guard let url = resource.urlComponents.url else {
             print("Invalid url from components")
             return nil
         }
-        return URLRequest(
+
+        var request = URLRequest(
             url: url,
             cachePolicy: resource.cachePolicy,
-            timeoutInterval: resource.timeout
-        )
+            timeoutInterval: resource.timeout)
+        let bodyParameters = resource.bodyParameters ?? [:]
+        let jsonData = try? JSONSerialization.data(withJSONObject: bodyParameters, options: [])
+        request.httpMethod = resource.method.rawValue
+        request.allHTTPHeaderFields = resource.headers as? [String: String] ?? [:]
+        request.httpBody = jsonData
+
+        return request
     }
     
     public func performRequest(for resource: ApiResource) -> ApiResponseProtocol? {
@@ -97,6 +103,7 @@ extension NetworkSession: NetworkSessionInput {
             }
             apiResponse = self.buildResponse(from: responseNotNil, data: data, error: error)
             dispatchGroup.leave()
+
         }).resume()
         
         dispatchGroup.wait()

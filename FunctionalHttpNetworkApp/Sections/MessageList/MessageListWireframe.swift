@@ -10,16 +10,15 @@ import UIKit
 import FunctionalHttpClient
 
 protocol MessageListWireframeInput {
-    func showMessageListVC() -> MessageListVC?
+    func showMessageList() -> MessageListVC?
 }
 
-struct MessageListWireframe {
-}
+struct MessageListWireframe {}
 
 extension MessageListWireframe: MessageListWireframeInput {
-    func showMessageListVC() -> MessageListVC? {
+    func showMessageList() -> MessageListVC? {
         guard let messageListVC =  UIStoryboard(
-            name: Constants.Identifiers.Storyboards.main,
+            name: Constants.Identifiers.Storyboards.home,
             bundle: Bundle.main)
             .instantiateViewController(
                 withIdentifier: Constants.Identifiers.ViewControllers.messageListVC)

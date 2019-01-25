@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Message list-->
+        <!--# Message list #-->
         <scene sceneID="IED-Zv-wpK">
             <objects>
                 <viewController storyboardIdentifier="MessageListVC" id="895-rJ-ptz" customClass="MessageListVC" customModule="FunctionalHttpNetworkApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JQN-ik-XXd">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JQN-ik-XXd">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -80,7 +80,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iCL-zq-4Oc"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Message list" image="message_list" id="hiH-6H-yV3"/>
+                    <tabBarItem key="tabBarItem" title="# Message list #" image="message_list" id="hiH-6H-yV3"/>
                     <connections>
                         <outlet property="messageList" destination="JQN-ik-XXd" id="fyb-xR-RsL"/>
                     </connections>
@@ -89,17 +89,95 @@
             </objects>
             <point key="canvasLocation" x="894" y="635"/>
         </scene>
-        <!--Send Message-->
+        <!--# Send Message #-->
         <scene sceneID="vaQ-jZ-j5Z">
             <objects>
                 <viewController storyboardIdentifier="NewMessageVC" id="WIL-bK-5Ea" customClass="NewMessageVC" customModule="FunctionalHttpNetworkApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kz2-vV-b0U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Username: #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xl1-ng-Fku">
+                                <rect key="frame" x="12" y="40" width="119.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xBp-3M-eCQ">
+                                <rect key="frame" x="12" y="81" width="351" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="g26-6C-Kx8"/>
+                                </constraints>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Content: #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoI-em-hDy">
+                                <rect key="frame" x="12" y="141" width="95.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIj-7D-Kea">
+                                <rect key="frame" x="123.5" y="607" width="128" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="mYt-vX-kiD"/>
+                                </constraints>
+                                <state key="normal" title="# Send Message #"/>
+                                <connections>
+                                    <action selector="sendButtonTapped:" destination="WIL-bK-5Ea" eventType="touchUpInside" id="zya-06-ubb"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aap-eh-GKZ">
+                                <rect key="frame" x="12" y="182" width="351" height="405"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="h78-h8-sjX">
+                                <rect key="frame" x="12" y="182" width="351" height="405"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text"># Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. #</string>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="h78-h8-sjX" firstAttribute="height" secondItem="Aap-eh-GKZ" secondAttribute="height" id="2VC-5w-m2f"/>
+                            <constraint firstItem="xBp-3M-eCQ" firstAttribute="leading" secondItem="IL3-6I-6Fm" secondAttribute="leading" constant="12" id="2WY-TZ-rX6"/>
+                            <constraint firstItem="IL3-6I-6Fm" firstAttribute="trailing" secondItem="h78-h8-sjX" secondAttribute="trailing" constant="12" id="3fo-de-PNZ"/>
+                            <constraint firstItem="IL3-6I-6Fm" firstAttribute="bottom" secondItem="zIj-7D-Kea" secondAttribute="bottom" constant="20" id="Aw1-wg-XF5"/>
+                            <constraint firstItem="zIj-7D-Kea" firstAttribute="centerX" secondItem="IL3-6I-6Fm" secondAttribute="centerX" id="CGK-gm-LI7"/>
+                            <constraint firstItem="IL3-6I-6Fm" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zIj-7D-Kea" secondAttribute="trailing" constant="12" id="DZy-fX-L84"/>
+                            <constraint firstItem="xl1-ng-Fku" firstAttribute="leading" secondItem="IL3-6I-6Fm" secondAttribute="leading" constant="12" id="EF9-Eg-Vlj"/>
+                            <constraint firstItem="IL3-6I-6Fm" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EoI-em-hDy" secondAttribute="trailing" constant="12" id="FOn-PJ-aAP"/>
+                            <constraint firstItem="xl1-ng-Fku" firstAttribute="top" secondItem="IL3-6I-6Fm" secondAttribute="top" constant="20" id="LKG-c4-cip"/>
+                            <constraint firstItem="IL3-6I-6Fm" firstAttribute="trailing" secondItem="xBp-3M-eCQ" secondAttribute="trailing" constant="12" id="VcI-T2-81G"/>
+                            <constraint firstItem="EoI-em-hDy" firstAttribute="leading" secondItem="IL3-6I-6Fm" secondAttribute="leading" constant="12" id="Vvf-m7-SPE"/>
+                            <constraint firstItem="xBp-3M-eCQ" firstAttribute="top" secondItem="xl1-ng-Fku" secondAttribute="bottom" constant="20" id="VxQ-qD-e3I"/>
+                            <constraint firstItem="IL3-6I-6Fm" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xl1-ng-Fku" secondAttribute="trailing" constant="12" id="YVg-dh-NMo"/>
+                            <constraint firstItem="IL3-6I-6Fm" firstAttribute="trailing" secondItem="Aap-eh-GKZ" secondAttribute="trailing" constant="12" id="ZRd-tQ-a3q"/>
+                            <constraint firstItem="zIj-7D-Kea" firstAttribute="top" secondItem="Aap-eh-GKZ" secondAttribute="bottom" constant="20" id="bbd-Su-pnb"/>
+                            <constraint firstItem="Aap-eh-GKZ" firstAttribute="top" secondItem="EoI-em-hDy" secondAttribute="bottom" constant="20" id="dOc-8F-F76"/>
+                            <constraint firstItem="h78-h8-sjX" firstAttribute="width" secondItem="Aap-eh-GKZ" secondAttribute="width" id="ggu-kI-cVJ"/>
+                            <constraint firstItem="zIj-7D-Kea" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IL3-6I-6Fm" secondAttribute="leading" constant="12" id="j8P-Sk-GZW"/>
+                            <constraint firstItem="h78-h8-sjX" firstAttribute="leading" secondItem="IL3-6I-6Fm" secondAttribute="leading" constant="12" id="sYo-sk-1D3"/>
+                            <constraint firstItem="Aap-eh-GKZ" firstAttribute="leading" secondItem="IL3-6I-6Fm" secondAttribute="leading" constant="12" id="tDy-o8-Kof"/>
+                            <constraint firstItem="h78-h8-sjX" firstAttribute="top" secondItem="EoI-em-hDy" secondAttribute="bottom" constant="20" id="uox-FV-7Jy"/>
+                            <constraint firstItem="EoI-em-hDy" firstAttribute="top" secondItem="xBp-3M-eCQ" secondAttribute="bottom" constant="20" id="xU6-IZ-FIy"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="IL3-6I-6Fm"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Send Message" image="send_message" id="Mh6-SF-WgH"/>
+                    <tabBarItem key="tabBarItem" title="# Send Message #" image="send_message" id="Mh6-SF-WgH"/>
+                    <connections>
+                        <outlet property="contentLabel" destination="EoI-em-hDy" id="N0U-pH-Gbn"/>
+                        <outlet property="contentTextView" destination="h78-h8-sjX" id="OCd-qh-PMD"/>
+                        <outlet property="sendButton" destination="zIj-7D-Kea" id="dNk-sO-azU"/>
+                        <outlet property="usernameLabel" destination="xl1-ng-Fku" id="mvu-ZS-wuW"/>
+                        <outlet property="usernameTextield" destination="xBp-3M-eCQ" id="T3R-5P-SCp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YjF-ku-vfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

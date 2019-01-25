@@ -12,10 +12,18 @@ import FunctionalHttpClient
 extension ApiResource {
     var urlComponents: URLComponents {
         var urlComponents = URLComponents()
-        let scheme = Constants.Services.scheme
+        let scheme = Config.scheme
+        let portString = Config.port ?? ""
+        let port: Int? = Int(portString)
         urlComponents.scheme = scheme
         urlComponents.path = self.endPoint
         urlComponents.host = Config.hostUrl
+        urlComponents.port = port
         return urlComponents
+    }
+
+     var headers: [AnyHashable: Any]? {
+        return [ Constants.Keys.contentType:
+            Constants.Keys.applicationJson]
     }
 }
