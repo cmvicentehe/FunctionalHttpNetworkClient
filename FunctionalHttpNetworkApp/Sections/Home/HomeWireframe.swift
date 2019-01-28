@@ -29,7 +29,7 @@ extension HomeWireframe: HomeWireframeInput {
         guard let messagesVC = messageListWireframe.showMessageList(),
             let newMessageVC = newMessageWireframe.showNewMessage()
         else { return print("Invalid view controller ") }
-        
+
         homeVC.viewControllers = [messagesVC, newMessageVC]
         self.window.rootViewController = homeVC
     }

@@ -10,22 +10,31 @@ import UIKit
 
 class MessageListVC: UIViewController {
     @IBOutlet weak var messageList: UITableView!
+
     var presenter: MessageListPresenterInput?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.presenter?.viewDidLoad(with: self.messageList)
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.tabBarItem.title = NSLocalizedString("message_list", comment: "")
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.presenter?.viewWillAppear(with: self.messageList)
     }
 }
 
 extension MessageListVC: MessageListUI {
     func showMessages() {
-        DispatchQueue.main.async {
-             self.messageList.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.messageList.reloadData()
         }
     }
     
     func show<ServiceError>(error: ServiceError) {
         #warning("TODO: Implement this method")
     }
+
+    #warning("TODO: Show an Activity indicator")
+    #warning("TODO: Implement message deletion")
 }

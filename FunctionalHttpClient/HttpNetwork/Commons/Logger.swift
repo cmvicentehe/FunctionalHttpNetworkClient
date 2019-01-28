@@ -25,7 +25,7 @@ struct Logger {
     init() {
         self.init(logLevel: .debug)
     }
-    #warning("TODO: Search for the best option")
+    
     func logDebug(message: String) {
         self.log(with: .debug, message: message)
     }

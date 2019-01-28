@@ -38,11 +38,10 @@ class NewMessagePresenter {
 }
 
 extension NewMessagePresenter: NewMessagePresenterInput {
-
     func viewDidLoad() {
-        self.view?.displayUsernameLabel("Username")
-        self.view?.displayContentLabel("Content")
-        self.view?.displaySendButtonTextLabel("Send")
+        self.view?.displayUsernameLabel(NSLocalizedString("username", comment: ""))
+        self.view?.displayContentLabel(NSLocalizedString("content", comment: ""))
+        self.view?.displaySendButtonTextLabel(NSLocalizedString("send", comment: ""))
     }
     func userDidTapSendButton(with username: String?, content: String?) {
         guard let usernameNotNil = username,
@@ -58,9 +57,9 @@ extension NewMessagePresenter: NewMessagePresenterInput {
 
 extension NewMessagePresenter: NewMessageInteractorOutput {
     func messageSent() {
-        
+         #warning("TODO: Show an alert and clean view")
     }
     func error<ServiceError>(_ error: ServiceError) {
-
+         #warning("TODO: Show an alert")
     }
 }

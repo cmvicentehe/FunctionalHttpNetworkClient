@@ -26,6 +26,7 @@ public enum ServiceError: Error {
     case unknownError
 }
 
+#warning("TODO: Use logger instead of prints")
 public class NetworkClient {
     public let networkSession: NetworkSessionInput
     public var networkClientOutput: NetworkClientOutput?
@@ -59,13 +60,12 @@ public class NetworkClient {
             #warning("TODO: Info status should be considerated an error?")
             return Future.pure(Result.error(.info))
         case .success:
-
-             #warning("TODO: Important! Delete force cast and search for a mechanism without using generics")
-            // swiftlint:disable force_cast
-            let emptyResponse: Output = EmptyResponse() as! Output
+            guard let emptyResponse = EmptyResponse() as? Output else {
+                print("Error casting empty response")
+                return Future.pure(Result.error(.unknownError))
+            } // Search for better option than returning error when casting fails
             let result = Result<Output, ServiceError>.success(emptyResponse)
             let future = Future.pure(result)
-             // swiftlint:enable force_cast
             return future
         case .clientError:
             return Future.pure(Result.error(.clientError))

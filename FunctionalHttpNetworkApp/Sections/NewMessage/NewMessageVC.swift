@@ -18,8 +18,13 @@ class NewMessageVC: UIViewController {
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var sendButton: UIButton!
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.tabBarItem.title = NSLocalizedString("Send message", comment: "")
+    }
+
+    override func loadView() {
+        super.loadView()
         self.initializeViews()
     }
 
@@ -29,12 +34,15 @@ class NewMessageVC: UIViewController {
     }
 
     private func initializeViews() {
-        #warning("TODO: Fix labels and textfield initialization issues and tab bar item label")
-//        self.usernameLabel.text = ""
-//        self.usernameTextield.text = ""
-//        self.contentLabel.text = ""
+        let titleColor = self.sendButton.titleColor(for: .normal)?.cgColor
+        self.usernameLabel.text = ""
+        self.usernameTextield.text = ""
+        self.contentLabel.text = ""
         self.contentTextView.text = ""
-//        self.sendButton.setTitle("", for: .normal)
+        self.sendButton.setTitle("", for: .normal)
+        self.sendButton.layer.borderWidth = 1
+        self.sendButton.layer.borderColor = titleColor
+        self.sendButton.layer.cornerRadius = 6
     }
 
     @IBAction func sendButtonTapped(_ sender: Any) {
@@ -57,4 +65,6 @@ extension NewMessageVC: NewMessageUI {
     func displaySendButtonTextLabel(_ sendButtonTextLabel: String) {
         self.sendButton.setTitle(sendButtonTextLabel, for: .normal)
     }
+
+     #warning("TODO: Show an Activity indicator")
 }

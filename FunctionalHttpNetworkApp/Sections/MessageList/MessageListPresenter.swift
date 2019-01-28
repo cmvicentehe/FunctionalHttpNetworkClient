@@ -19,7 +19,7 @@ protocol MessageListPresenterInput {
     var interactor: MessageListInteractorInput { get set }
     var wireframe: MessageListWireframeInput { get set }
 
-    func viewDidLoad(with tableView: UITableView)
+    func viewWillAppear(with tableView: UITableView)
 }
 
 class MessageListPresenter {
@@ -40,7 +40,7 @@ class MessageListPresenter {
 }
 
 extension MessageListPresenter: MessageListPresenterInput {
-    func viewDidLoad(with tableView: UITableView) {
+    func viewWillAppear(with tableView: UITableView) {
         self.tableViewViewModel.configure(tableView: tableView)
         self.interactor.retrieveMessages()
     }
