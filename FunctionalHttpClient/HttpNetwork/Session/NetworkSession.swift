@@ -74,14 +74,24 @@ extension NetworkSession: NetworkSessionInput {
             return nil
         }
 
+        let bodyParameters = resource.bodyParameters ?? [:]
+        let headers = resource.headers as? [String: String] ?? [:]
+        let httpMethod = resource.method.rawValue
+        let jsonData = try? JSONSerialization.data(withJSONObject: bodyParameters, options: [])
+
+        Logger.shared.logDebug("REQUEST")
+        Logger.shared.logDebug("URL: ---> \(url)")
+        Logger.shared.logDebug("Headers: ---> \(headers)")
+        Logger.shared.logDebug("Method: ---> \(httpMethod)")
+        Logger.shared.logDebug("Body: ---> \(bodyParameters)")
+
         var request = URLRequest(
             url: url,
             cachePolicy: resource.cachePolicy,
             timeoutInterval: resource.timeout)
-        let bodyParameters = resource.bodyParameters ?? [:]
-        let jsonData = try? JSONSerialization.data(withJSONObject: bodyParameters, options: [])
-        request.httpMethod = resource.method.rawValue
-        request.allHTTPHeaderFields = resource.headers as? [String: String] ?? [:]
+
+        request.allHTTPHeaderFields = headers
+        request.httpMethod = httpMethod
         request.httpBody = jsonData
 
         return request

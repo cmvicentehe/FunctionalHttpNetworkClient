@@ -43,9 +43,13 @@ public class NetworkClient {
         (for response: ApiResponseProtocol?)
         -> Future<Result<Output, ServiceError>> {
         guard let dataNotNil = response?.data,
+            let json = try? JSONSerialization.jsonObject(with: dataNotNil,
+                                                         options: .allowFragments),
             let output = try? JSONDecoder().decode(Output.self, from: dataNotNil) else {
             return self.manageHttpStatus(for: response)
         }
+        Logger.shared.logDebug("RESPONSE")
+        Logger.shared.logDebug("JSON: \(json)")
 
         return Future.pure(Result.success(output))
     }
@@ -63,7 +67,7 @@ public class NetworkClient {
     private func manageHttpStatus<Output: Codable>
         (for response: ApiResponseProtocol?) -> Future<Result<Output, ServiceError>> {
         guard let responseNotNil = response else { return Future.pure(Result.error(.unknownError)) }
-
+        Logger.shared.logDebug("HTTP STATUS")
         let status = responseNotNil.status
         switch status {
         case .info(let code):
@@ -99,6 +103,7 @@ extension NetworkClient: NetworkClientInput {
                         Logger.shared.logDebug("\(value)")
                         self.networkClientOutput?.outputResult(value, for: resource)
                     case .error(let error):
+                        Logger.shared.logDebug(" --- ERROR: -- ")
                         Logger.shared.logDebug("\(error)")
                         self.networkClientOutput?.error(error, for: resource)
                     }
