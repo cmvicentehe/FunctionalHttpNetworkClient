@@ -39,11 +39,11 @@ extension NewMessageService: NewMessageServiceInput {
 }
 
 extension NewMessageService: NetworkClientOutput {
-    func outputResult<OutputResult>(_ outputResult: OutputResult) {
+    func outputResult<OutputResult>(_ outputResult: OutputResult, for apiResource: ApiResource) {
         self.interactor?.messageSent()
     }
 
-    func error<ServiceError>(_ error: ServiceError) {
+    func error<ServiceError>(_ error: ServiceError, for apiResource: ApiResource) {
         self.interactor?.error(error)
     }
 }

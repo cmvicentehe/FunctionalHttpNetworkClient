@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FunctionalHttpClient
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,11 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.showHome()
+        self.initializeLogs()
+        return true
+    }
+
+    private func showHome() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.makeKeyAndVisible()
-        guard let windowNotNil = self.window else { return false }
+        guard let windowNotNil = self.window else { return }
         let homeWireframe = HomeWireframe(window: windowNotNil)
         homeWireframe.showTabBar()
-        return true
+    }
+
+    private func initializeLogs() {
+        Logger.shared.logLevel = .debug
     }
 }

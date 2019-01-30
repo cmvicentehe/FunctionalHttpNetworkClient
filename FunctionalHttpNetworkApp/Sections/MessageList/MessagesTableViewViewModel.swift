@@ -13,12 +13,16 @@ class MessagesTableViewViewModel: NSObject,
     UITableViewDataSource,
     UITableViewDelegate {
 
+    var tableView: UITableView?
     var items: [Message]?
+    weak var presenter: MessageListPresenterInput?
+    var indexPathToDelete: IndexPath?
 
     // MARK: TableViewViewModelInput methods
     func configure(tableView: UITableView) {
         tableView.dataSource = self
         tableView.delegate = self
+        self.tableView = tableView
     }
 
     // MARK: TableViewDataSource methods
@@ -41,5 +45,33 @@ class MessagesTableViewViewModel: NSObject,
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let message = self.items?[indexPath.row]
+            self.indexPathToDelete = indexPath
+            guard let idNotNil = message?.messageId else {
+                    print("Invalid message id")
+                    return
+            }
+            self.presenter?.userDidTapMessage(with: idNotNil)
+        }
+    }
+
+    func deleteRowAtIndexPath() {
+        guard let indexPathNotNil = self.indexPathToDelete else {
+            print("Index path to be deleted is nil")
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            let row = indexPathNotNil.row
+            self?.items?.remove(at: row)
+            self?.tableView?.deleteRows(at: [indexPathNotNil],
+                                       with: .fade)
+            self?.indexPathToDelete = nil
+        }
     }
 }

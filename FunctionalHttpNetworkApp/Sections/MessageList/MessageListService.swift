@@ -13,10 +13,12 @@ protocol MessageListServiceInput {
     var networkClient: NetworkClientInput { get set }
     var interactor: MessageListServiceOutput? { get set }
     func retrieveMssages()
+    func deleteMessage(with idMessage: String)
 }
 
 protocol MessageListServiceOutput: class {
     func messages(_ messages: [Message])
+    func messageDeleted()
     func error<ServiceError>(_ error: ServiceError)
 }
 
@@ -35,15 +37,33 @@ extension MessageListService: MessageListServiceInput {
         let type = [Message].self
         self.networkClient.performRequest(for: messageListResource, type: type)
     }
+
+    func deleteMessage(with idMessage: String) {
+        let deleteEndPoint = Constants.Services.Endpoints.deleteMessage
+        let placeholder = Constants.Services.Endpoints.messageIdPlaceholder
+        let endPoint = deleteEndPoint.replacingOccurrences(of: placeholder,
+                                                           with: idMessage)
+        let deleteMessageResource = DeleteMessageResource(endPoint: endPoint)
+        let type = EmptyResponse.self
+        self.networkClient.performRequest(for: deleteMessageResource,
+                                          type: type)
+    }
 }
 
 extension MessageListService: NetworkClientOutput {
-    func outputResult<OutputResult>(_ outputResult: OutputResult) {
-        guard let messages = outputResult as? [Message] else { return print("Output result is not of expected type") }
-        self.interactor?.messages(messages)
+    func outputResult<OutputResult>(_ outputResult: OutputResult, for apiResource: ApiResource) {
+        if apiResource is MessageListResource {
+            guard let messages = outputResult as? [Message] else {
+                print("Output result is not of expected type")
+                return
+            }
+            self.interactor?.messages(messages)
+        } else if apiResource is DeleteMessageResource {
+            self.interactor?.messageDeleted()
+        }
     }
     
-    func error<ServiceError>(_ error: ServiceError) {
+    func error<ServiceError>(_ error: ServiceError, for apiResource: ApiResource) {
         self.interactor?.error(error)
     }
 }

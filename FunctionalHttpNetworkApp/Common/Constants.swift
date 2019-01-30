@@ -14,6 +14,7 @@ struct Constants {
             static let messages = "/messages"
             static let sendMessage = "/send"
             static let deleteMessage = "/delete/{{messageId}}"
+            static let messageIdPlaceholder = "{{messageId}}"
         }
     }
     

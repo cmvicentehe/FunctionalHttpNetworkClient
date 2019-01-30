@@ -10,11 +10,11 @@ import Foundation
 
 /// HTTP status codes according to https://es.wikipedia.org/wiki/Anexo:Códigos_de_estado_HTTP
 public enum Status {
-    case info
-    case success
-    case clientError
-    case redirection
-    case serverError
+    case info (Int)
+    case success (Int)
+    case clientError (Int)
+    case redirection (Int)
+    case serverError (Int)
     case unknown
 }
 

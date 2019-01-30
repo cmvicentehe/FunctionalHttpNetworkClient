@@ -23,14 +23,16 @@ extension HomeWireframe: HomeWireframeInput {
             bundle: Bundle.main)
             .instantiateViewController(withIdentifier: Constants.Identifiers.ViewControllers.homeVC)
             as? HomeVC else { return print("Invalid home view controller ") }
-        
-        let messageListWireframe = MessageListWireframe()
-        let newMessageWireframe = NewMessageWireframe()
+
+        let navigationController = UINavigationController(rootViewController: homeVC)
+        let messageListWireframe = MessageListWireframe(navigationController: navigationController)
+        let newMessageWireframe = NewMessageWireframe(navigationController: navigationController)
+
         guard let messagesVC = messageListWireframe.showMessageList(),
             let newMessageVC = newMessageWireframe.showNewMessage()
-        else { return print("Invalid view controller ") }
+            else { return print("Invalid view controller ") }
 
         homeVC.viewControllers = [messagesVC, newMessageVC]
-        self.window.rootViewController = homeVC
+        self.window.rootViewController = navigationController
     }
 }

@@ -17,7 +17,7 @@ protocol TableViewCell {
 
 protocol TableViewViewModel {
     associatedtype Item
-
+    var tableView: UITableView? { get set }
     var items: [Item]? { get set }
     func configure(tableView: UITableView)
 }

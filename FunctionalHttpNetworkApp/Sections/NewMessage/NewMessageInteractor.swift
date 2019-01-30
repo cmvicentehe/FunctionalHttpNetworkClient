@@ -37,6 +37,7 @@ extension NewMessageInteractor: NewMessageInteractorInput {
 
 extension NewMessageInteractor: NewMessageServiceOutput {
     func messageSent() {
+        self.presenter?.messageSent()
     }
 
     func error<ServiceError>(_ error: ServiceError) {

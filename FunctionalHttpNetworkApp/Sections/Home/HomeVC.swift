@@ -12,5 +12,7 @@ class HomeVC: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = NSLocalizedString("app_name",
+                          comment: "")
     }
 }

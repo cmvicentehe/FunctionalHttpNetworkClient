@@ -32,7 +32,7 @@ public struct NetworkSession {
         
         guard let urlNotNil = response.url,
         let urlComponents = URLComponents(url: urlNotNil, resolvingAgainstBaseURL: true) else {
-            print("Invalid url from response object")
+            Logger.shared.logError("Invalid url from response object")
             return nil
         }
         
@@ -50,15 +50,15 @@ public struct NetworkSession {
         var status: Status = .unknown
         switch statusCode {
         case 100...199:
-            status = .info
+            status = .info(statusCode)
         case 200...299:
-            status = .success
+            status = .success(statusCode)
         case 300...399:
-            status = .redirection
+            status = .redirection(statusCode)
         case 400...499:
-            status = .clientError
+            status = .clientError(statusCode)
         case 500...599:
-            status = .serverError
+            status = .serverError(statusCode)
         default:
             status = .unknown
         }
@@ -70,7 +70,7 @@ extension NetworkSession: NetworkSessionInput {
     // MARK: Request
     public func buildURLRequest(from resource: ApiResource) -> URLRequest? {
         guard let url = resource.urlComponents.url else {
-            print("Invalid url from components")
+            Logger.shared.logError("Invalid url from components")
             return nil
         }
 
@@ -89,7 +89,7 @@ extension NetworkSession: NetworkSessionInput {
     
     public func performRequest(for resource: ApiResource) -> ApiResponseProtocol? {
         guard let urlRequest = self.buildURLRequest(from: resource) else {
-            print("Invalid request")
+            Logger.shared.logError("Invalid request")
             return nil
         }
         let dispatchGroup = DispatchGroup()
@@ -98,7 +98,7 @@ extension NetworkSession: NetworkSessionInput {
         self.urlSession.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             guard let responseNotNil = response as? HTTPURLResponse else {
                 dispatchGroup.leave()
-                print("Invalid response")
+                Logger.shared.logError("Invalid response")
                 return
             }
             apiResponse = self.buildResponse(from: responseNotNil, data: data, error: error)

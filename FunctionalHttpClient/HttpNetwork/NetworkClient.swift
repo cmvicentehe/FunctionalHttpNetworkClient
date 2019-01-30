@@ -14,19 +14,19 @@ public protocol NetworkClientInput {
 }
 
 public protocol NetworkClientOutput {
-    func outputResult<OutputResult>(_ outputResult: OutputResult)
-    func error<ServiceError>(_ error: ServiceError)
+    func outputResult<OutputResult>(_ outputResult: OutputResult, for apiResource: ApiResource)
+    func error<ServiceError>(_ error: ServiceError, for apiResource: ApiResource)
 }
 
 public enum ServiceError: Error {
-    case info
-    case clientError
-    case serverError
-    case redirection
+    case info(Int)
+    case clientError(Int)
+    case serverError(Int)
+    case redirection(Int)
+    case invalidResponse
     case unknownError
 }
 
-#warning("TODO: Use logger instead of prints")
 public class NetworkClient {
     public let networkSession: NetworkSessionInput
     public var networkClientOutput: NetworkClientOutput?
@@ -50,30 +50,39 @@ public class NetworkClient {
         return Future.pure(Result.success(output))
     }
 
+    private func createEmptyResponse<Output: Codable>() -> Future<Result<Output, ServiceError>> {
+        guard let emptyResponse = EmptyResponse() as? Output else {
+            Logger.shared.logError("Error casting empty response")
+            return Future.pure(Result.error(.invalidResponse))
+        } // Search for better option than returning error when casting fails
+        let result = Result<Output, ServiceError>.success(emptyResponse)
+        let future = Future.pure(result)
+        return future
+    }
+
     private func manageHttpStatus<Output: Codable>
         (for response: ApiResponseProtocol?) -> Future<Result<Output, ServiceError>> {
         guard let responseNotNil = response else { return Future.pure(Result.error(.unknownError)) }
 
         let status = responseNotNil.status
         switch status {
-        case .info:
-            #warning("TODO: Info status should be considerated an error?")
-            return Future.pure(Result.error(.info))
+        case .info(let code):
+            Logger.shared.logInfo("RESPONSE with <INFO> status and code \(code)")
+            return self.createEmptyResponse()
         case .success:
-            guard let emptyResponse = EmptyResponse() as? Output else {
-                print("Error casting empty response")
-                return Future.pure(Result.error(.unknownError))
-            } // Search for better option than returning error when casting fails
-            let result = Result<Output, ServiceError>.success(emptyResponse)
-            let future = Future.pure(result)
-            return future
-        case .clientError:
-            return Future.pure(Result.error(.clientError))
-        case .redirection:
-            return Future.pure(Result.error(.redirection))
-        case .serverError:
-           return Future.pure(Result.error(.serverError))
+            Logger.shared.logInfo("RESPONSE with <SUCCESS> status")
+            return self.createEmptyResponse()
+        case .clientError(let code):
+            Logger.shared.logInfo("RESPONSE with <CLIENT ERROR> status and code \(code)")
+            return Future.pure(Result.error(.clientError(code)))
+        case .redirection(let code):
+            Logger.shared.logInfo("RESPONSE with <REDIRECTION ERROR> status and code \(code)")
+            return Future.pure(Result.error(.redirection(code)))
+        case .serverError(let code):
+            Logger.shared.logInfo("RESPONSE with <SERVER ERROR> status and code \(code)")
+           return Future.pure(Result.error(.serverError(code)))
         case .unknown:
+            Logger.shared.logInfo("RESPONSE with <UNKNOWN ERROR> status")
             return Future.pure(Result.error(.unknownError))
         }
     }
@@ -87,9 +96,11 @@ extension NetworkClient: NetworkClientInput {
                 .runAsync { (result: Result<Output, ServiceError>) in
                     switch result {
                     case .success(let value):
-                        self.networkClientOutput?.outputResult(value)
+                        Logger.shared.logDebug("\(value)")
+                        self.networkClientOutput?.outputResult(value, for: resource)
                     case .error(let error):
-                        self.networkClientOutput?.error(error)
+                        Logger.shared.logDebug("\(error)")
+                        self.networkClientOutput?.error(error, for: resource)
                     }
             }
         }

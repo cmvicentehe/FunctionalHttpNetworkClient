@@ -10,7 +10,9 @@ import UIKit
 
 class MessageListVC: UIViewController {
     @IBOutlet weak var messageList: UITableView!
-
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var presenter: MessageListPresenterInput?
 
     override func awakeFromNib() {
@@ -25,16 +27,25 @@ class MessageListVC: UIViewController {
 }
 
 extension MessageListVC: MessageListUI {
+    func showActicityIndicator() {
+        DispatchQueue.main.async {
+            self.loadingView.isHidden = false
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+        }
+    }
+
+    func hideActivityIndicator() {
+        DispatchQueue.main.async {
+            self.loadingView.isHidden = true
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
+        }
+    }
+
     func showMessages() {
         DispatchQueue.main.async { [weak self] in
             self?.messageList.reloadData()
         }
     }
-    
-    func show<ServiceError>(error: ServiceError) {
-        #warning("TODO: Implement this method")
-    }
-
-    #warning("TODO: Show an Activity indicator")
-    #warning("TODO: Implement message deletion")
 }

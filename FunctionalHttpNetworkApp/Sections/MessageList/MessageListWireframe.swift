@@ -11,9 +11,12 @@ import FunctionalHttpClient
 
 protocol MessageListWireframeInput {
     func showMessageList() -> MessageListVC?
+    func showAlert(with title: String, message: String, completion:(() -> Void)?)
 }
 
-struct MessageListWireframe {}
+struct MessageListWireframe {
+    let navigationController: UINavigationController
+}
 
 extension MessageListWireframe: MessageListWireframeInput {
     func showMessageList() -> MessageListVC? {
@@ -35,6 +38,7 @@ extension MessageListWireframe: MessageListWireframeInput {
                                              interactor: interactor,
                                              wireframe: self,
                                              tableViewViewModel: tableViewViewModel)
+        tableViewViewModel.presenter = presenter
         networkClient.networkClientOutput = service
         interactor.presenter = presenter
         presenter.interactor = interactor
@@ -42,5 +46,22 @@ extension MessageListWireframe: MessageListWireframeInput {
         messageListVC.presenter = presenter
         
         return messageListVC
+    }
+
+    func showAlert(with title: String, message: String, completion:(() -> Void)? = nil) {
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+
+        let alertAction = UIAlertAction(title: NSLocalizedString("ok", comment: ""),
+                                        style: .default) { _ in
+                                            guard let completionNotNil = completion else {
+                                                return
+                                            }
+                                            completionNotNil()
+        }
+
+        alertController.addAction(alertAction)
+        self.navigationController.show(alertController, sender: self)
     }
 }

@@ -11,9 +11,12 @@ import FunctionalHttpClient
 
 protocol NewMessageWireframeInput {
     func showNewMessage() -> NewMessageVC?
+    func showAlert(with title: String, message: String, completion:(() -> Void)?)
 }
 
-struct NewMessageWireframe {}
+struct NewMessageWireframe {
+    let navigationController: UINavigationController
+}
 
 extension NewMessageWireframe: NewMessageWireframeInput {
     func showNewMessage() -> NewMessageVC? {
@@ -40,5 +43,26 @@ extension NewMessageWireframe: NewMessageWireframeInput {
         newMessageVC.presenter = presenter
 
         return newMessageVC
+    }
+
+    func showAlert(with title: String, message: String, completion: (() -> Void)? = nil) {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: title,
+                                                    message: message,
+                                                    preferredStyle: .alert)
+
+            let alertAction = UIAlertAction(title: NSLocalizedString("ok", comment: ""),
+                                            style: .default) { _ in
+                                                guard let completionNotNil = completion else {
+                                                    return
+                                                }
+                                                completionNotNil()
+            }
+
+            alertController.addAction(alertAction)
+            self.navigationController.present(alertController,
+                                              animated: true,
+                                              completion: nil)
+        }
     }
 }

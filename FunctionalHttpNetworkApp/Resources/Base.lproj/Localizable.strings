@@ -6,6 +6,9 @@
   Copyright © 2019 cmvicentehe. All rights reserved.
 */
 
+"app_name" = "FunctionalHttpNetwork";
+"ok" = "OK";
+
 /*****************************      HOME    *****************************/
 "message_list" = "Message list";
 "send_message" = "Send message";
@@ -14,3 +17,7 @@
 "username" = "Username";
 "content" = "Content";
 "send" = "Send";
+"message_sent_success" = "Message sent succesfully";
+"message_sent_error" = "There was a problem sending the message";
+"empty_username_content" = "Username or content is empty. Please fill it out and try again";
+

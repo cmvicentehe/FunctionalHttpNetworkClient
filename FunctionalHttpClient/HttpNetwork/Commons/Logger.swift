@@ -14,44 +14,53 @@ enum KindOfLog: String {
     case error = "ERROR: "
 }
 
-struct Logger {
-    static let shared = Logger()
-    let logLevel: LogLevel
+public class Logger {
+    public static let shared = Logger()
+    public var logLevel: LogLevel
+    public var queue: DispatchQueue
     
-    init(logLevel: LogLevel) {
+    init(logLevel: LogLevel = .debug,
+         queue: DispatchQueue = DispatchQueue(label: "com.cmvicentehe.FunctionalHttpClient", qos: .utility)) {
         self.logLevel = logLevel
+        self.queue = queue
     }
     
-    init() {
-        self.init(logLevel: .debug)
+    func logDebug(_ message: String) {
+        self.queue.sync {
+            self.log(with: .debug, message: message)
+        }
     }
     
-    func logDebug(message: String) {
-        self.log(with: .debug, message: message)
+    func logInfo(_ message: String) {
+        self.queue.sync {
+            self.log(with: .info, message: message)
+        }
     }
     
-    func logInfo(message: String) {
-        self.log(with: .info, message: message)
-    }
-    
-    func logError(message: String) {
+    func logError(_ message: String) {
+     self.queue.sync {
         self.log(with: .error, message: message)
+     }
     }
-    
-    fileprivate func log(with kind: KindOfLog, message: String) {
-        switch self.logLevel {
+
+    private func log(with kind: KindOfLog, message: String) {
+        switch kind {
         case .debug:
-            print("------> \(kind) --- \(message)")
+            if self.logLevel > .info {
+                print("------> \(kind.rawValue) --- \(message)")
+            }
         case .info:
-            print("------> \(kind) --- \(message)")
+            if self.logLevel > .error {
+                print("------> \(kind.rawValue) --- \(message)")
+            }
         case .error:
-            let file = #file
-            let function = #function
-            let line = #line
-            print("------> \(kind): in \(file)")
-            print("\t\t ---> Calling to \(function): at line \(line)")
-        case .none:
-            print("")
+            if self.logLevel > .none {
+                let file = #file
+                let function = #function
+                let line = #line
+                print("------> \(kind.rawValue): in \(file)")
+                print("\t\t ---> Calling to \(function): at line \(line)")
+            }
         }
     }
 }
