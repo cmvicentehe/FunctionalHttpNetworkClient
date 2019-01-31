@@ -48,7 +48,7 @@ extension MessageListWireframe: MessageListWireframeInput {
         return messageListVC
     }
 
-    func showAlert(with title: String, message: String, completion:(() -> Void)? = nil) {
+    func showAlert(with title: String, message: String, completion:(() -> Void)?) {
         let alertController = UIAlertController(title: title,
                                                 message: message,
                                                 preferredStyle: .alert)

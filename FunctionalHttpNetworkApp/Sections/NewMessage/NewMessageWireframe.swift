@@ -45,7 +45,7 @@ extension NewMessageWireframe: NewMessageWireframeInput {
         return newMessageVC
     }
 
-    func showAlert(with title: String, message: String, completion: (() -> Void)? = nil) {
+    func showAlert(with title: String, message: String, completion: (() -> Void)?) {
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: title,
                                                     message: message,

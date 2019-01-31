@@ -20,7 +20,7 @@ protocol NewMessageUI: class {
 protocol NewMessagePresenterInput {
     var view: NewMessageUI? { get set }
     var interactor: NewMessageInteractorInput { get set }
-    var wireframe: NewMessageWireframe { get set }
+    var wireframe: NewMessageWireframeInput { get set }
 
     func viewDidLoad()
     func userDidTapSendButton(with username: String?, content: String?)
@@ -29,7 +29,7 @@ protocol NewMessagePresenterInput {
 class NewMessagePresenter {
     weak var view: NewMessageUI?
     var interactor: NewMessageInteractorInput
-    var wireframe: NewMessageWireframe
+    var wireframe: NewMessageWireframeInput
 
     init(view: NewMessageUI?,
          interactor: NewMessageInteractorInput,
@@ -57,7 +57,8 @@ extension NewMessagePresenter: NewMessagePresenterInput {
                 let message = NSLocalizedString("empty_username_content",
                                                 comment: "")
                 self.wireframe.showAlert(with: title,
-                                         message: message)
+                                         message: message,
+                                         completion: nil)
                 return
         }
         self.view?.showActicityIndicator()
@@ -84,6 +85,7 @@ extension NewMessagePresenter: NewMessageInteractorOutput {
         let message = String(describing: error)
         self.view?.hideActivityIndicator()
         self.wireframe.showAlert(with: title,
-                                 message: message)
+                                 message: message,
+                                 completion: nil)
     }
 }
