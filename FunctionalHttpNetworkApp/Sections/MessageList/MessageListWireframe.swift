@@ -49,19 +49,21 @@ extension MessageListWireframe: MessageListWireframeInput {
     }
 
     func showAlert(with title: String, message: String, completion:(() -> Void)?) {
-        let alertController = UIAlertController(title: title,
-                                                message: message,
-                                                preferredStyle: .alert)
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: title,
+                                                    message: message,
+                                                    preferredStyle: .alert)
 
-        let alertAction = UIAlertAction(title: NSLocalizedString("ok", comment: ""),
-                                        style: .default) { _ in
-                                            guard let completionNotNil = completion else {
-                                                return
-                                            }
-                                            completionNotNil()
+            let alertAction = UIAlertAction(title: NSLocalizedString("ok", comment: ""),
+                                            style: .default) { _ in
+                                                guard let completionNotNil = completion else {
+                                                    return
+                                                }
+                                                completionNotNil()
+            }
+
+            alertController.addAction(alertAction)
+            self.navigationController.show(alertController, sender: self)
         }
-
-        alertController.addAction(alertAction)
-        self.navigationController.show(alertController, sender: self)
     }
 }

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F0D393721F78E5800A7BA3B /* Staging.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8F0D393621F78E5800A7BA3B /* Staging.xcconfig */; };
-		8F0EC0152005FF49008D85C8 /* FunctionalHttpNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC0142005FF49008D85C8 /* FunctionalHttpNetworkTests.swift */; };
 		8F0EC033200600D3008D85C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0EC028200600D2008D85C8 /* Assets.xcassets */; };
 		8F0EC037200600D3008D85C8 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC030200600D2008D85C8 /* HomeVC.swift */; };
 		8F0EC038200600D3008D85C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC032200600D2008D85C8 /* AppDelegate.swift */; };
@@ -86,7 +84,6 @@
 		8F0D393621F78E5800A7BA3B /* Staging.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Staging.xcconfig; sourceTree = "<group>"; };
 		8F0EBFFC2005FF49008D85C8 /* FunctionalHttpNetworkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunctionalHttpNetworkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0EC0102005FF49008D85C8 /* FunctionalHttpNetworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunctionalHttpNetworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F0EC0142005FF49008D85C8 /* FunctionalHttpNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionalHttpNetworkTests.swift; sourceTree = "<group>"; };
 		8F0EC0162005FF49008D85C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F0EC028200600D2008D85C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F0EC02D200600D2008D85C8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -193,7 +190,6 @@
 		8F0EC0132005FF49008D85C8 /* FunctionalHttpNetworkTests */ = {
 			isa = PBXGroup;
 			children = (
-				8F0EC0142005FF49008D85C8 /* FunctionalHttpNetworkTests.swift */,
 				8F0EC0162005FF49008D85C8 /* Info.plist */,
 			);
 			path = FunctionalHttpNetworkTests;
@@ -465,7 +461,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = cmvicentehe;
 				TargetAttributes = {
 					8F0EBFFB2005FF49008D85C8 = {
@@ -511,7 +507,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FF63D1221FA0E0900906058 /* Localizable.strings in Resources */,
-				8F0D393721F78E5800A7BA3B /* Staging.xcconfig in Resources */,
 				8F0EC033200600D3008D85C8 /* Assets.xcassets in Resources */,
 				8FF63D1621FA0E6800906058 /* LaunchScreen.storyboard in Resources */,
 				8FF63D1521FA0E6800906058 /* Home.storyboard in Resources */,
@@ -609,7 +604,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F0EC0152005FF49008D85C8 /* FunctionalHttpNetworkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,7 +778,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.functionalNetworkCommunication.FunctionalHttpNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Staging;
@@ -802,7 +796,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.functionalNetworkCommunication.FunctionalHttpNetwork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Production;
@@ -864,7 +858,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cmvicentehe.FunctionalHttpClient;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -892,7 +886,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

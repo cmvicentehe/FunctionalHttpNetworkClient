@@ -10,4 +10,4 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 
 SCHEME = https
-HOST_URL = easy-test-api-staging.vapor.cloud
+HOST_URL = vapor-easy-test-api.herokuapp.com

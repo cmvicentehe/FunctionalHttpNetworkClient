@@ -77,7 +77,8 @@ extension NetworkSession: NetworkSessionInput {
         let bodyParameters = resource.bodyParameters ?? [:]
         let headers = resource.headers as? [String: String] ?? [:]
         let httpMethod = resource.method.rawValue
-        let jsonData = try? JSONSerialization.data(withJSONObject: bodyParameters, options: [])
+        let jsonData = (bodyParameters.count > 0) ?
+            try? JSONSerialization.data(withJSONObject: bodyParameters, options: []) : nil
 
         Logger.shared.logDebug("REQUEST")
         Logger.shared.logDebug("URL: ---> \(url)")
