@@ -23,7 +23,7 @@ protocol NewMessageServiceOutput: class {
 class NewMessageService {
     var networkClient: NetworkClientInput
     weak var interactor: NewMessageServiceOutput?
-
+    
     init(networkClient: NetworkClientInput) {
         self.networkClient = networkClient
     }
@@ -34,7 +34,10 @@ extension NewMessageService: NewMessageServiceInput {
         let sendMessageResource = SendMessageResource(username: username,
                                                       content: content,
                                                       endPoint: Constants.Services.Endpoints.sendMessage)
-        self.networkClient.performRequest(for: sendMessageResource, type: EmptyResponse.self)
+        let decoder = CustomJSONDecoder()
+        self.networkClient.performRequest(for: sendMessageResource,
+                                          type: EmptyResponse.self,
+                                          decoder: decoder)
     }
 }
 
@@ -42,7 +45,7 @@ extension NewMessageService: NetworkClientOutput {
     func outputResult<OutputResult>(_ outputResult: OutputResult, for apiResource: ApiResource) {
         self.interactor?.messageSent()
     }
-
+    
     func error<ServiceError>(_ error: ServiceError, for apiResource: ApiResource) {
         self.interactor?.error(error)
     }

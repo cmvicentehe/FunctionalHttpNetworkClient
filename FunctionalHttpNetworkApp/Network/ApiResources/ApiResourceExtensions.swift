@@ -21,9 +21,9 @@ extension ApiResource {
         urlComponents.port = port
         return urlComponents
     }
-
-     var headers: [AnyHashable: Any]? {
-        return [ Constants.Keys.contentType:
+    
+    var headers: [AnyHashable: Any]? {
+        return [Constants.Keys.contentType:
             Constants.Keys.applicationJson]
     }
 }

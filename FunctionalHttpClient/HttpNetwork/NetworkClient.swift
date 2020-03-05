@@ -9,8 +9,10 @@
 import Foundation
 
 public protocol NetworkClientInput {
-     var networkClientOutput: NetworkClientOutput? { get set }
-     func performRequest<Output>(for resource: ApiResource, type: Output.Type) where Output: Codable
+    var networkClientOutput: NetworkClientOutput? { get set }
+    func performRequest<Output>(for resource: ApiResource,
+                                type: Output.Type,
+                                decoder: ResponseDecoder) where Output: Codable
 }
 
 public protocol NetworkClientOutput {
@@ -30,9 +32,11 @@ public enum ServiceError: Error {
 public class NetworkClient {
     public let networkSession: NetworkSessionInput
     public var networkClientOutput: NetworkClientOutput?
+    public var decoder: ResponseDecoder
     
-    public init(networkSession: NetworkSessionInput) {
+    public init(networkSession: NetworkSessionInput, decoder: ResponseDecoder = CustomJSONDecoder()) {
         self.networkSession = networkSession
+        self.decoder = decoder
     }
     
     private func futureResponse(for apiResource: ApiResource) -> Future<ApiResponseProtocol?> {
@@ -42,16 +46,15 @@ public class NetworkClient {
     private func futureResult<Output: Codable>
         (for response: ApiResponseProtocol?)
         -> Future<Result<Output, ServiceError>> {
-        guard let dataNotNil = response?.data,
-            let json = try? JSONSerialization.jsonObject(with: dataNotNil,
-                                                         options: .allowFragments),
-            let output = try? JSONDecoder().decode(Output.self, from: dataNotNil) else {
-            return self.manageHttpStatus(for: response)
-        }
-        Logger.shared.logDebug("RESPONSE")
-        Logger.shared.logDebug("JSON: \(json)")
+            guard let dataNotNil = response?.data,
+                let object = try? self.decoder.object(with: dataNotNil),
+                let output = try? self.decoder.decode(Output.self, from: dataNotNil) else {
+                    return self.manageHttpStatus(for: response)
+            }
+            Logger.shared.logDebug("RESPONSE")
+            Logger.shared.logDebug("OBJECT: \(object)")
 
-        return Future.pure(Result.success(output))
+            return Future.pure(Result.success(output))
     }
 
     private func createEmptyResponse<Output: Codable>() -> Future<Result<Output, ServiceError>> {
@@ -84,7 +87,7 @@ public class NetworkClient {
             return Future.pure(Result.error(.redirection(code)))
         case .serverError(let code):
             Logger.shared.logInfo("RESPONSE with <SERVER ERROR> status and code \(code)")
-           return Future.pure(Result.error(.serverError(code)))
+            return Future.pure(Result.error(.serverError(code)))
         case .unknown:
             Logger.shared.logInfo("RESPONSE with <UNKNOWN ERROR> status")
             return Future.pure(Result.error(.unknownError))
@@ -93,20 +96,23 @@ public class NetworkClient {
 }
 
 extension NetworkClient: NetworkClientInput {
-    public func performRequest<Output>(for resource: ApiResource, type: Output.Type) where Output: Codable {
-            Future.pure(resource)
-                .flatMap(self.futureResponse)
-                .flatMap(self.futureResult)
-                .runAsync { (result: Result<Output, ServiceError>) in
-                    switch result {
-                    case .success(let value):
-                        Logger.shared.logDebug("\(value)")
-                        self.networkClientOutput?.outputResult(value, for: resource)
-                    case .error(let error):
-                        Logger.shared.logDebug(" --- ERROR: -- ")
-                        Logger.shared.logDebug("\(error)")
-                        self.networkClientOutput?.error(error, for: resource)
-                    }
-            }
+    public func performRequest<Output>(for resource: ApiResource,
+                                       type: Output.Type,
+                                       decoder: ResponseDecoder) where Output: Codable {
+        self.decoder = decoder
+        Future.pure(resource)
+            .flatMap(self.futureResponse)
+            .flatMap(self.futureResult)
+            .runAsync { (result: Result<Output, ServiceError>) in
+                switch result {
+                case .success(let value):
+                    Logger.shared.logDebug("\(value)")
+                    self.networkClientOutput?.outputResult(value, for: resource)
+                case .error(let error):
+                    Logger.shared.logDebug(" --- ERROR: -- ")
+                    Logger.shared.logDebug("\(error)")
+                    self.networkClientOutput?.error(error, for: resource)
+                }
         }
+    }
 }

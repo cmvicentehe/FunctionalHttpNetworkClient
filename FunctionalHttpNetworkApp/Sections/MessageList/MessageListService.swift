@@ -35,9 +35,12 @@ extension MessageListService: MessageListServiceInput {
     func retrieveMssages() {
         let messageListResource = MessageListResource(endPoint: Constants.Services.Endpoints.messages)
         let type = [Message].self
-        self.networkClient.performRequest(for: messageListResource, type: type)
+        let decoder = CustomJSONDecoder()
+        self.networkClient.performRequest(for: messageListResource,
+                                          type: type,
+                                          decoder: decoder)
     }
-
+    
     func deleteMessage(with idMessage: String) {
         let deleteEndPoint = Constants.Services.Endpoints.deleteMessage
         let placeholder = Constants.Services.Endpoints.messageIdPlaceholder
@@ -45,8 +48,10 @@ extension MessageListService: MessageListServiceInput {
                                                            with: idMessage)
         let deleteMessageResource = DeleteMessageResource(endPoint: endPoint)
         let type = EmptyResponse.self
+        let decoder = CustomJSONDecoder()
         self.networkClient.performRequest(for: deleteMessageResource,
-                                          type: type)
+                                          type: type,
+                                          decoder: decoder)
     }
 }
 

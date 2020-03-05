@@ -45,6 +45,8 @@
 		D4795C29216928910079EC7A /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A5B2F200787DF005997F6 /* ApiResponse.swift */; };
 		D4795C2A216928970079EC7A /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0EC03D200624A0008D85C8 /* Future.swift */; };
 		D4795C2B2169289C0079EC7A /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49772A620A8A9F9009B9D0E /* NetworkSession.swift */; };
+		D4E33255241118A000F18DED /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E33253241118A000F18DED /* Decoder.swift */; };
+		D4E33256241118A000F18DED /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E33254241118A000F18DED /* JSONDecoder.swift */; };
 		D4EEA09E21DCE5AE00B385CC /* MessageListResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EEA09D21DCE5AE00B385CC /* MessageListResource.swift */; };
 		D4FE5F4521ECE9B800D149C7 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4189159216A42DF00882BFC /* NetworkClient.swift */; };
 /* End PBXBuildFile section */
@@ -126,6 +128,8 @@
 		D4795C09216928240079EC7A /* FunctionalHttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunctionalHttpClient.h; sourceTree = "<group>"; };
 		D4795C0A216928240079EC7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D49772A620A8A9F9009B9D0E /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
+		D4E33253241118A000F18DED /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		D4E33254241118A000F18DED /* JSONDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
 		D4EEA09D21DCE5AE00B385CC /* MessageListResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListResource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,6 +214,7 @@
 		8F0EC02E200600D2008D85C8 /* HttpNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				D4E33252241118A000F18DED /* Decoders */,
 				D4189159216A42DF00882BFC /* NetworkClient.swift */,
 				D49772A520A8A9DE009B9D0E /* Session */,
 				8F1A5B2C20078689005997F6 /* Commons */,
@@ -370,6 +375,15 @@
 				D49772A620A8A9F9009B9D0E /* NetworkSession.swift */,
 			);
 			path = Session;
+			sourceTree = "<group>";
+		};
+		D4E33252241118A000F18DED /* Decoders */ = {
+			isa = PBXGroup;
+			children = (
+				D4E33253241118A000F18DED /* Decoder.swift */,
+				D4E33254241118A000F18DED /* JSONDecoder.swift */,
+			);
+			path = Decoders;
 			sourceTree = "<group>";
 		};
 		D4EEA09C21DCE54D00B385CC /* ApiResources */ = {
@@ -616,9 +630,11 @@
 				D4795C26216928850079EC7A /* Result.swift in Sources */,
 				8FF63D1721FB08D100906058 /* EmptyResponse.swift in Sources */,
 				D4795C27216928890079EC7A /* Logger.swift in Sources */,
+				D4E33256241118A000F18DED /* JSONDecoder.swift in Sources */,
 				D4795C282169288D0079EC7A /* ApiResource.swift in Sources */,
 				D4795C29216928910079EC7A /* ApiResponse.swift in Sources */,
 				D4795C25216928810079EC7A /* LogLevel.swift in Sources */,
+				D4E33255241118A000F18DED /* Decoder.swift in Sources */,
 				D4FE5F4521ECE9B800D149C7 /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
